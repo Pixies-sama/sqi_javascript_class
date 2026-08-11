@@ -31,3 +31,7 @@ let _hassan = "ho"
 let name = "Hassan";
 let bussayoAge = 30;
 let favourAge = 39;
+
+
+// 11th August 2026
+// let allows us to reassign and not redeclear 

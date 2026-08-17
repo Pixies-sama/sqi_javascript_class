@@ -10,19 +10,47 @@
     
     <input type="text" name="" id="user">
     <button onclick="console.log(document.getElementById('user').value);
-    "></button>
+    ">click</button>
 
-
-
+    <p id="paragraph"></p>
+    <button onclick="document.getElementById('paragraph').innerText = 'Hello world'">click</button>
+    <br><br>
 
     <!-- Ten editable element -->
-     <!-- read on DOM -->
+     <!-- ANSWER  -->
+    <input type="text"> <br><br>
+    <input type="email"> <br><br>
+    <input type="password" name="" id=""> <br><br>
+    <input type="date" name="" id=""> <br><br>
+    <input type="range" name="" id=""> <br><br>
+    <input type="checkbox" name="" id=""> <br><br>
+    <input type="radio" name="" id=""> <br><br>
+    <select name="" id=""></select> <br> <br>
+    <textarea name="" id=""></textarea> <br>
+
+    <!-- read on DOM -->
+     <!-- answer -->
+    <!--  -->
     <!-- what is the difference between innerText, innerHTML, and textContent -->
     <!-- create an input element , buttotn  -->
 
 
-    <input type="text" id="inputbtn">
-    <button id="btn" onclick="">click</button>
-    <p id="paragraph"></p>
+    <!-- Assignment one -->
+    <p id="par">fddf</p>
+    <input type="text" id="users">
+    <button onclick="document.getElementById('par').innerHTML = document.getElementById('users').value">click</button>
+    <br><br>
+
+    <!-- Assignment two -->
+    <!-- Use an input field any text typed should show in a p element  -->
+    <input type="text" id="typeAlong" onkeyup="document.getElementById('typing').textContent = document.getElementById('typeAlong').value">
+     <p id="typing"></p>
+
+
+     <!-- 17th aug 2026 -->
+      <!-- mouse event -->
+    <!-- key event -->
+    <!-- form event -->
+     <!-- window event -->
 </body>
 </html>

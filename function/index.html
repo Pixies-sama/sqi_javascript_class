@@ -16,17 +16,13 @@
     <button id="increase" onclick="increaseNumber()">increase</button>
     <button id="decrease" onclick="decreaseNumber()">decrease</button>
 
-    <div id="greet">Helo</div>
+    <hr>
+
+    <div id="greet">Hello world</div>
     <p class="greet">Good Morning</p>
     <section class="greet">How are you doing everyone</section>
     <p>God is the greatest</p>
     <a href="#">click</a>
-
-    <h2 id="header_one"></h2>
-    <h2 id="header_two"></h2>
-    <h3 class="header_three"></h2>
-    <h2 class="header_four"></h2>
-    <h2 class="header_five"></h2>
 
 
     <script>
@@ -146,23 +142,51 @@
     // Assignment
     // 1. Read and understand otheer DOM methods that we are yet to discuss in class
     // 2. Create 5 sentences in your script and display them on your UI
-    let headerOne = document.getElementById("header_one");
-    let headerTwo = document.getElementById("header_two");
-    let headerThree = document.getElementsByTagName('h3');
-    let headerFour = document.getElementsByClassName('header_four');
-    let headerFive = document.querySelector('.header_five');
+    
+    let sentenceOne = document.createElement('h4');
+    let sentenceTwo = document.createElement('h4');
+    let sentenceThree = document.createElement('h4');
+    let sentenceFour = document.createElement('h4');
+    let sentenceFive = document.createElement('h4');
+   
+    sentenceOne.innerText = "My name is Hassan Omoloye Akinkunmi";
+    sentenceTwo.innerText = "I'm a student of The Prestigious University of ilorin";
+    sentenceThree.innerText = "A 300l Computer Science student";
+    sentenceFour.innerText = "Learning Javascript currently";
+    sentenceFive.innerText = "I want to be a Full stack Developer";
+
+    document.body.appendChild(sentenceOne)
+    document.body.appendChild(sentenceTwo)
+    document.body.appendChild(sentenceThree)
+    document.body.appendChild(sentenceFour)
+    document.body.appendChild(sentenceFive)
+
+
+    // 20TH AUGUST 2026
+    // SeTAttribute
+    createP.setAttribute("id", "grettings")
+    // removeAttribute
+    createP.removeAttribute("id")
+
+    // styling
+    getFirstSelected.style.backgroundColor = "yellow";
+    getFirstSelected.style.textAlign = "center";
+    getFirstSelected.style.color = "white";
+    getFirstSelected.style.backgroundColor = "yellow";
     
 
-    headerOne.innerText = "My name is Hassan Omoloye Akinkunmi";
-    headerTwo.innerText = "I'm a student of The Prestigious University of ilorin";
-    headerThree[0].innerHTML = "A 300l Computer Science student";
-    headerFour[0].innerHTML = "Learning Javascript currently";
-    headerFive.innerText = "My name is Hassan Omoloye Akinkunmi";
 
 
-    let arrayList = [1, 3, 4, 5,]
-    console.log(arrayList[2]);
-    
+
+
+
+    // ASSIGNMENT
+    // CREATE A FILE, INSIDE CREATE A BUTTON, ONCLICK ON THE BUTTOON BACKGROUND COLOR OF THE BODY SHOULD BE PURPLE
+
+    // Read on conditional statement
+
+    // create an input type password with a default closed eye icon 
+
     </script>
 </body>
 </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      
+    <input type="number" id="ageInput">
+    <button id="checkAge" onclick="ageCheck()">click</button>
+    <p id="result"></p>
+
+    <script>
+        // 24th august 2026
+        // Conditional statement
+        // if
+        if(4 > 2){
+            console.log("4 is really greater than 2");
+            
+        }
+
+        // if else 
+        if (4 >5) {
+            console.log("4 is greater than 5");
+            
+        } else {
+            console.log("4 is less than 5");
+        }
+
+        // else if
+        let num = 4
+        if (num > 12) {
+            console.log("ok");
+        } else if(num === "4"){
+            console.log("lol");
+        }else if(num <2){
+            console.log("hi");
+        }else if(num == "4"){
+            console.log("hey");
+        }else if(num >= 4){
+            console.log("hello");
+        }
+
+
+        // Class work
+        // Write a program that checkm the eligibity of Nigerians in voting 
+        // steps : Create an input field 
+
+        let checkAge = document.getElementById('checkAge')
+        let inputedValue = document.getElementById('ageInput')
+    
+        function ageCheck() {
+        if(inputedValue.value > 100) {
+            console.log("please input age between 0 - 100");  
+            result.innerHTML = "please input age between 0 - 100"}
+        else if (inputedValue.value == ""){
+            console.log("hiii");  
+            result.innerHTML = "Input a value" 
+        }else if (inputedValue.value >= 18 && inputedValue.value <= 100) {
+            console.log("I am eligible to vote");  
+            result.innerHTML = "I am eligible to vote" 
+        }else  if (inputedValue.value >= 0 && inputedValue.value < 18 ) {
+            console.log("I am not eligible to vote");  
+            result.innerHTML = "I am not eligible to vote" 
+        }else  if (inputedValue.value < 0) {
+            console.log("please input age between 0 - 100");  
+            result.innerHTML = "please input age between 0 - 100" 
+        }
+        }
+
+        // Answer 
+        // Build a grading sytem at the scale of 0.1 to 5.0 (University Level)
+        // Create an input and a button 
+       
+
+
+    </script>
+
+    
+</body>
+</html>

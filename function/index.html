@@ -8,6 +8,7 @@
         *{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+    
     </style>
     
 </head>
@@ -25,6 +26,11 @@
     <a href="#">click</a>
 
 
+    <!-- Assignment one -->
+    <button onclick="colorChange()">Change Color</button>
+    <br><br>
+
+    
     <script>
     <!-- Function -->
      <!-- Function is a reuseable block of  code used to performm a specific task -->
@@ -173,19 +179,29 @@
     getFirstSelected.style.textAlign = "center";
     getFirstSelected.style.color = "white";
     getFirstSelected.style.backgroundColor = "yellow";
-    
-
-
-
-
-
 
     // ASSIGNMENT
     // CREATE A FILE, INSIDE CREATE A BUTTON, ONCLICK ON THE BUTTOON BACKGROUND COLOR OF THE BODY SHOULD BE PURPLE
+    let changeColor = document.getElementById('changeColor')
+
+    document.body.style.backgroundColor = "brown";
+    function colorChange(){
+        document.body.style.backgroundColor = "grey";
+        // if (document.body.style.backgroundColor === "Yellow") {
+        //     document.body.style.backgroundColor = "blue";
+        // }else{
+        //    document.body.style.backgroundColor = "green";
+        // }
+    }
+
+   
+
+    // colorChange()
 
     // Read on conditional statement
 
     // create an input type password with a default closed eye icon 
+   
 
     </script>
 </body>

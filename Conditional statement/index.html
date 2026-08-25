@@ -6,10 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-      
+     
+    <div>
     <input type="number" id="ageInput">
     <button id="checkAge" onclick="ageCheck()">click</button>
     <p id="result"></p>
+    </div>
+    
+
+    <div>
+    <input type="number" id="cgpaInput">
+    <button id="cgpaCheck" onclick="cgpa()">click</button>
+    <p id="cgpaResult"></p>
+    </div>
 
     <script>
         // 24th august 2026
@@ -74,6 +83,37 @@
         // Create an input and a button 
        
 
+        
+        let cgpaCheck = document.getElementById('cgpaCheck')
+        let cgpaInput = document.getElementById('cgpaInput')
+
+        function cgpa() {
+        if(cgpaInput.value > 5.0) {
+            console.log("Input grade between 0.1 - 5.0");  
+            cgpaResult.innerHTML = "Input grade between 0.1 - 5.0"}
+        else if (cgpaInput.value == ""){
+            console.log("Input your CGPA");  
+            cgpaResult.innerHTML = "Input your CGPA" 
+        }else if (cgpaInput.value >= 4.5 && cgpaInput.value <= 5.0) {
+            console.log("First-class Student");  
+            cgpaResult.innerHTML = "First-class Student" 
+        }else  if (cgpaInput.value >= 3.50 && cgpaInput.value <= 4.49 ) {
+            console.log("Second-class Upper Student");  
+            cgpaResult.innerHTML = "Second-class Upper Student" 
+        }else  if (cgpaInput.value >= 2.40 && cgpaInput.value <= 3.49) {
+            console.log("Second class Lower");  
+            cgpaResult.innerHTML = "Second class Lower" 
+        }else  if (cgpaInput.value >= 1.50 && cgpaInput.value <= 2.39) {
+            console.log("Third class Honours");  
+            cgpaResult.innerHTML = "Third class Honours" ;
+        }else  if (cgpaInput.value >= 1.00 && cgpaInput.value <= 1.49) {
+            console.log("Pass");  
+            cgpaResult.innerHTML = "Pass" ;
+        }else if(cgpaInput.value >= 0.00 && cgpaInput.value <= 0.99) {
+            console.log("Fail");  
+            cgpaResult.innerHTML = "Fail";
+        }
+        }
 
     </script>
 

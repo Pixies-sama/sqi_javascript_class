@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Loop i sused to repeatedly execute a block of code as long as a specified condition is met 
+        /*
+        for (let index = 1; index <= 10; index++) {
+           console.log(index);
+        }
+
+        for (let index = 1; index <= 10; index++) {
+            if (index % 2 == 0) {
+                console.log(index);
+                
+            }
+        }
+        for (let index = 20; index <= 50; index++) {
+            if (index % 2 !== 0) {
+                console.log(index);
+                
+            }
+        }
+        */
+
+
+        // Returns multiplication table 2
+        let topic = document.createElement('h3')
+        topic.innerText = "Multiplication table 2";
+        document.body.appendChild(topic)
+
+        for (let index = 1; index <= 10; index++) {
+            let number = 2;
+            let mul = index * number;
+
+        console.log(`${number} * ${index} = ${mul} ` );   
+
+        let table2 = document.createElement('p')
+        table2.innerText = `${number} * ${index} = ${mul} `;
+        document.body.appendChild(table2)
+        }
+
+        
+        // Assignment 
+        // read extensively on 2 dimensional loops in javascript and use it to create 1x12 to 12x12 multiplication times table that displays on the UI
+
+    
+        
+
+    </script>
+</body>
+</html>

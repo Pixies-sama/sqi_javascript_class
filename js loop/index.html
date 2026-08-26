@@ -8,29 +8,58 @@
         *{
             font-family: Arial, Helvetica, sans-serif
         }
+        #contentOne{
+            /* width: 100%; */
+            /* border: 2px solid black; */
+            background-color: coral;
+            display: flex;
+            justify-content: space-between;
+            /* gap: 10px; */
+            flex-wrap: wrap;
+            padding: 10px;
+            /* gap: 10px;
+            justify-content: space-between; */
+        }
+        #contentTwo{
+            width: 20%;
+            /* border: 2px solid black; */
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
+
+    <input type="number" id="num_one" placeholder="input a number">
+    <input type="number" id="num_two" placeholder="input a number">
+    <button id="numMul" onclick="checkMul()">Click me </button>
+
+
+
+
     <script>
+        // 25th august 2026
         // Loop i sused to repeatedly execute a block of code as long as a specified condition is met 
         /*
         for (let index = 1; index <= 10; index++) {
            console.log(index);
         }
 
+        // Even number
         for (let index = 1; index <= 10; index++) {
             if (index % 2 == 0) {
                 console.log(index);
                 
             }
         }
+
+        // Odd number
         for (let index = 20; index <= 50; index++) {
             if (index % 2 !== 0) {
                 console.log(index);
                 
             }
         }
-        */
+        
 
 
         // Returns multiplication table 2
@@ -48,12 +77,100 @@
         table2.innerText = `${number} * ${index} = ${mul} `;
         document.body.appendChild(table2)
         }
-
+        
         
         // Assignment 
         // read extensively on 2 dimensional loops in javascript and use it to create 1x12 to 12x12 multiplication times table that displays on the UI
 
-    
+        // Answer
+        for(let x = 1; x <= 12; x++){
+           let mainContainer = document.createElement('div');
+
+            for(let y = 1; y <= 12; y++){
+            
+            let mainText = document.createElement('p');
+            mainContainer.setAttribute('id',"contentDiv" )
+
+            mainText.innerHTML = x + " * " + y + " = " + x * y;
+            mainContainer.appendChild(mainText);
+            document.body.appendChild(mainContainer);
+            document.body.style.display = 'flex';
+            document.body.style.flexWrap = 'wrap';
+            document.body.style.gap = '10px';
+        }  
+        }
+        */
+
+
+        // 26th august 2026
+        // Do while loop
+        let num = 2;
+        do {
+            console.log("yes");
+            num++
+        } while (num <= 4);
+
+        // output: yes twice
+
+        // while loop
+        let check = 2
+        while (check <= 4) {
+            console.log("Hello world");
+            check++;
+        }
+
+        // break
+        for (let index = 0; index <= 5; index++) {
+            console.log("Yes");
+            if (index == 3) {
+                break;
+            }
+            
+        }
+
+        // continue
+        for (let index = 0; index <= 5; index++) {
+            console.log("Yes");
+            if (index == 3) {
+                continue;
+            }
+            
+        }
+
+        // Assignment
+        // create two inputs and a button that takes a number and gives the multiplication of the number inputed
+
+        let numOne = document.getElementById('num_one');
+        let numTwo = document.getElementById('num_two')
+        // let checkMul = document.getElementById('numMul')   
+
+        let containerOne = document.createElement('div');
+        
+        
+
+        function checkMul() {
+            for(let x = numOne.value; x <= numTwo.value; x++){
+            let containerTwo = document.createElement('div');
+            for(let y = 1; y <= 12; y++){
+            
+            let mainText = document.createElement('p');
+
+            containerOne.setAttribute('id',"contentOne" )
+            containerTwo.setAttribute('id',"contentTwo" );
+            
+            mainText.innerHTML = x + " * " + y + " = " + x * y;
+            
+            containerTwo.appendChild(mainText);
+        }
+        containerOne.appendChild(containerTwo)
+        }
+        document.body.appendChild(containerOne);
+        numOne.value = "";
+        numTwo.value = "";
+        
+        }
+
+         
         
 
     </script>

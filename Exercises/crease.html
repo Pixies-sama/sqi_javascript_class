@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="inputNumber" >
+    <button id="increase" onclick="increaseNumber()">increase</button>
+    <button id="decrease" onclick="decreaseNumber()">decrease</button>
+
+    <!-- 28th august 2026 -->
+
+    <script>
+        // class work
+    let inputValue = document.getElementById('inputNumber')
+    let increase = document.getElementById('increase')
+    let decrease = document.getElementById('decrease')
+
+    // function increaseNumber() {
+    //     return inputValue.value++;
+    //     if (inputValue.value == 10 ) {
+            
+    //     }
+    // }
+
+    // function decreaseNumber() {
+    //    return inputValue.value--
+    // }
+
+
+    // increaseNumber()
+    // decreaseNumber() 
+
+    increase.addEventListener("click", ()=>{
+
+        if (inputValue.value < 10) {
+             inputValue.value++;
+           
+        }
+    })
+
+     decrease.addEventListener("click", ()=>{
+        inputValue.value--;
+        if (inputValue.value <= 0) {
+            inputValue.value = ""
+        }
+    })
+
+
+    // Assignment 
+    // Read, understand, meditate on 
+    // String methods 
+    // array method
+    // Array
+    // Object
+    
+    </script>
+</body>
+</html>

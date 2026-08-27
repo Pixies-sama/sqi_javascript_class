@@ -147,19 +147,17 @@
         let containerOne = document.createElement('div');
         
         
-
+        containerOne.setAttribute('id',"contentOne" )
         function checkMul() {
-            for(let x = numOne.value; x <= numTwo.value; x++){
+            containerOne.textContent = "";
+
+            for(let x = Number(numOne.value); x <= Number(numTwo.value); x++){
             let containerTwo = document.createElement('div');
             for(let y = 1; y <= 12; y++){
             
             let mainText = document.createElement('p');
-
-            containerOne.setAttribute('id',"contentOne" )
             containerTwo.setAttribute('id',"contentTwo" );
-            
             mainText.innerHTML = x + " * " + y + " = " + x * y;
-            
             containerTwo.appendChild(mainText);
         }
         containerOne.appendChild(containerTwo)

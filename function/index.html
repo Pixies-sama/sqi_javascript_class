@@ -95,12 +95,18 @@
     let decrease = document.getElementById('decrease')
 
     function increaseNumber() {
-       return inputValue.value++
+        
+        if (inputValue.value == 10 ) {
+            return inputValue.value++;
+               inputValue.value = "" 
+        }
     }
 
     function decreaseNumber() {
        return inputValue.value--
     }
+
+
     decreaseNumber()
     increaseNumber()
 

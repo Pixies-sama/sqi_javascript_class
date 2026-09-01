@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ARRAY -->
+     <input type="text" id="inputField">
+    <button onclick="createList()">click</button>
+    <ol id="display"><ol>
+
+    <script>
+        // 1st september 2026
+         //Array
+        let names = ["tope", "ope", "sade", "tolu", "grace"];
+        console.log(names.length);
+        // console.log(names[4]);
+        // console.log(names[1]);
+        // names[2] = "Hassan";
+        // console.log(names);
+
+        //Array methods
+        //push
+        // names.push("Favour");
+        // console.log(names);
+        // //pop
+        // names.pop();
+        // console.log(names);
+        // //unshift
+        // names.unshift("Favour");
+        // console.log(names);
+        // //shift
+        // names.shift()
+        // console.log(names);
+        //indexOf
+        console.log(names.indexOf("sade"));
+        //splice
+        names.splice(1, 0, "taiwo", "busayo");
+        console.log(names);
+        //join
+        //includes
+
+
+        // ASSignment
+        let listBtn = document.getElementById('listBtn');
+        let inputField = document.getElementById('inputField')
+        let display = document.getElementById('display')
+
+
+        let arr = [];
+        function createList() {
+            // let createL = document.createElement('li')
+
+            // display.appendChild(createL)
+            // display.innerHTML += `<li>  ${inputField.value}    <button onclick=delBtn()>Delete</button> </li>`
+            arr.push(`<li>  ${inputField.value}    <button onclick=delBtn()>Delete</button> </li>`)
+            display.innerHTML = arr;
+            console.log(arr);
+            inputField.value = " "
+
+            // for (let x = 1; x <= arr.length; x++) {
+            //    return createL.innerHTML += `<li> ${inputField.value} <button>Delete</button>`;
+            // }
+        }
+
+        function delBtn(index) {
+            arr.splice(index, 1)
+            // display.innerHTML += `<li>  ${inputField.value}    <button onclick=delBtn()>Delete</button> </li>`
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //  let arr = [];
+        // listBtn.addEventListener("click", ()=> {
+
+        //     let createDiv =document.createElement('div')
+        //     let createL = document.createElement('li')
+
+        //     createDiv.appendChild(createlist)
+        //     createlist.appendChild(createL);
+           
+        //     createL.innerHTML = inputField.value + ` <button onclick=delbtn()>Delete</button>`;
+
+        //     arr.push(inputField.value)
+        //     createL.innerHTML = arr;
+
+        //     console.log(arr);
+            
+        //     document.body.appendChild(createDiv);
+        //     inputField.value =" "    
+        // })
+        
+        
+        // function delbtn() {
+        //     arr.splice();
+        //     alert("hi")
+        // }
+        
+    </script>
+</body>
+</html>

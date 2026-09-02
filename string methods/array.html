@@ -9,7 +9,7 @@
     <!-- ARRAY -->
      <input type="text" id="inputField">
     <button onclick="createList()">click</button>
-    <ol id="display"><ol>
+    <div id="display"><div>
 
     <script>
         // 1st september 2026
@@ -46,9 +46,46 @@
         // ASSignment
         let listBtn = document.getElementById('listBtn');
         let inputField = document.getElementById('inputField')
-        let display = document.getElementById('display')
+        let result = document.getElementById('display')
 
 
+        let arr = [];
+
+
+        function createList(){
+            let inputField = document.getElementById('inputField');
+            let inputs = inputField.value;
+            
+            arr.push(inputs)
+            inputField.value = " "
+            console.log(arr);
+            display()
+        }
+
+        function display() {
+            result.innerHTML = " "
+            for (let i = 0; i < arr.length; i++) {
+            result.innerHTML += `<p> ${i + 1} ${arr[i]} <button onclick="del()">delete</button> </p>`;
+            
+            }
+        }
+        
+        function del(index) {
+            arr.splice(index, 1);
+           display()
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /*
         let arr = [];
         function createList() {
             // let createL = document.createElement('li')
@@ -69,19 +106,6 @@
             arr.splice(index, 1)
             // display.innerHTML += `<li>  ${inputField.value}    <button onclick=delBtn()>Delete</button> </li>`
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         //  let arr = [];
@@ -110,6 +134,7 @@
         //     alert("hi")
         // }
         
+        */
     </script>
 </body>
 </html>

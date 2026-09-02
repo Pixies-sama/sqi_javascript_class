@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <input type="text" placeholder="enter name" id="inputObj">
+   <button onclick="obj()" >Add</button>
+   <br><br>
+
+   <!-- add user property and value -->
+   <input type="text" placeholder="enter key" id="inputProperty">
+   <input type="text" placeholder="enter value" id="inputValue">
+   <button onclick="proBtn()" >Add</button>
+
+    <script>
+
+        let property = document.getElementById("inputProperty");
+        let values = document.getElementById("inputValue")
+
+        let objects = {};
+        function proBtn() {
+            objects[property.value] = values.value;
+            console.log(objects);
+            
+        }
+
+
+        // 2nd september 2026
+        // Js Object
+        let person = {
+            name: "Hassan", 
+            gender: "male",
+            age:12,
+            complexion: "dark",
+            occupation: "Shoe creator",
+            "marital status": "engaged",
+            canTalk(){
+                console.log("Hassan can talk");
+                
+            },
+            hobbies:["Singing", "coding", "eating"]
+        }
+
+        console.log(person);
+        // Accessing properties and methods in an object 
+        // through dot notation
+        console.log(person.gender);
+        console.log(person.age);
+        console.log(person.complexion);
+        console.log(person.occupation);
+        person.canTalk()
+
+        // through square braces notation 
+        // it's used when there is a whitespace in the property name or it's a string
+        console.log(person["marital status"]);
+        // console.log(person[name]);❌
+        console.log(person["name"]);
+        
+
+        // let objInp = document.getElementById('inputObj')
+        // function obj(){
+        //     let values = objInp.value;
+        //     let user = {
+        //     name: values  ,  
+        // }
+        // console.log( user);
+        // }
+
+        // function obj(){
+        //     let objects = {};
+        //     let objData = objInp.value;
+        //     objects.name  = objData
+        //     console.log(objects);
+        // }
+
+       
+    </script>
+</body>
+</html>

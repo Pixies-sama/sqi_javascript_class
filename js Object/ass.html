@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1{
+            text-align: center;
+        }
+        input{
+            width: 250px;
+            padding: 10px 0;
+            padding-inline: 5px;
+            font-size: 16px;
+        }
+        button{
+            padding: 10px 10px;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+
+    </style>
+</head>
+<body>
+    
+ <!-- // 3rd september 2026 -->
+    <!-- The task Is to take student input/data (3 inputs) for Name, Gender and their Phone number. And then a Delete button along with each result on reach line of result on the UI 
+
+And a button “add” right after the input elements such that on click of add, it lists the student data as number 1 on the UI in form of a table with serial number
+
+Then you enter a new student’s details and click on add, it enters it as serial number 2 on the table on the UI -->
+
+<h1>Todos Table</h1>
+<input type="text" id="nameInp" placeholder="input name">
+<input type="text" id="genderInp" placeholder="input gender">
+<input type="number" id="contactInp" placeholder="input contact">
+<button onclick="addBtn()">Add</button>
+<!-- <div id="display"></div> -->
+<table id="display">
+    <tr>
+            <th>S/N</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Contact</th>
+            <th>Delete</th>
+        </tr>
+</table>
+
+<script>
+let nameInp = document.getElementById('nameInp');
+let genderInp = document.getElementById('genderInp');
+let contactInp = document.getElementById('contactInp');
+let display = document.getElementById('display')
+
+
+let arr = []
+
+function addBtn() {
+    let objects = {};
+    let names = nameInp.value;
+    let genders = genderInp.value;
+    let contacts = contactInp.value;
+
+    objects.name = names;
+    objects.gender = genders
+    objects.contact = contacts
+
+    nameInp.value = " ";
+    genderInp.value = " ";
+    contactInp.value = "";
+   
+    arr.push(objects)
+    show()
+    // console.log(objects);
+    // console.log(arr);
+    
+}
+
+function show() {
+    display.innerHTML = ` <tr>
+            <th>S/N</th>
+            <th>Network</th>
+            <th>Amount</th>
+            <th>Contact</th>
+            <th>Delete</th>
+        </tr>`
+    for (let i = 0; i < arr.length; i++) {
+        display.innerHTML += `
+        <table>
+        <tr>
+            <td>${i + 1}</td>
+            <td>${arr[i].name}</td>
+            <td>${arr[i].gender}</td>
+            <td>${arr[i].contact}</td>
+            <td><button onclick="delBtn(${i})">Delete</button></td>
+        </tr>
+        </table>`
+    }
+}
+
+function delBtn(index) {
+            arr.splice(index, 1);
+           show()
+        }
+
+        // ASSAIGNMENT
+        // READ ON MATH OBJECT
+        // DATE OBJECT
+        // HIGHER ORDER FUNCTION
+</script>
+</body>
+</html>

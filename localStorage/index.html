@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=0, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome To Local Storage class</h1>
+    <!-- 7th september 2026-->
+    <script>
+        // setItem
+        localStorage.setItem("name", "Hassan")
+        // getItem
+        console.log(localStorage.getItem("name"));
+        document.body.innerHTML += `<p> ${localStorage.getItem("name")} </p>`;
+
+        let students = ["Hassan", "Sama", "Jokes"]
+        localStorage.setItem("names", JSON.stringify(students))
+        let result = JSON.parse(localStorage.getItem("names"));
+        console.log(result);
+        // document.body.innerHTML +=`<p> ${localStorage.getItem("name")} </p>`;
+
+        // createb an object store it in your local storage 
+        let object = {
+            name: "Hassan",
+            age: 18,
+            color: "red",
+            student:true
+        }
+
+        localStorage.setItem("objects", JSON.stringify(object))
+    </script>
+</body>
+</html>

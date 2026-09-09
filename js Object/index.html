@@ -6,26 +6,76 @@
     <title>Document</title>
 </head>
 <body>
+
+    <!-- HTML for Classwork -->
    <input type="text" placeholder="enter name" id="inputObj">
    <button onclick="obj()" >Add</button>
    <br><br>
 
+   <!-- HTML for classwork two -->
    <!-- add user property and value -->
    <input type="text" placeholder="enter key" id="inputProperty">
    <input type="text" placeholder="enter value" id="inputValue">
    <button onclick="proBtn()" >Add</button>
+   <div id="objectDisplay"></div>
 
     <script>
 
         let property = document.getElementById("inputProperty");
         let values = document.getElementById("inputValue")
+        let objectDisplay = document.getElementById("objectDisplay")
 
+
+        // Class work 2 : it takes the key and it's value and adds in the console
+        // let objects = {};
+        // function proBtn() {
+        //     objects[property.value] = values.value;
+        //     console.log(objects);
+        //     property.value =" ";
+        //     values.value =" ";
+        //     displayObj()
+        // }
+
+
+       
+//         The task Is to take student input/data (3 inputs) for Name, Gender and their Phone number. And then a Delete button along with each result on reach line of result on the UI 
+
+// And a button “add” right after the input elements such that on click of add, it lists the student data as number 1 on the UI in form of a table with serial number
+
+// Then you enter a new student’s details and click on add, it enters it as serial number 2 on the table on the UI
+
+        let arr = []
         let objects = {};
         function proBtn() {
-            objects[property.value] = values.value;
+            
+            let keyInp = property.value;
+            let valueInp = values.value;
+
+            
+            objects[keyInp] = " ";
+            objects[valueInp] = " ";
+
+            arr.push(objects)
             console.log(objects);
+            console.log(arr);
+            
+            property.value =" ";
+            values.value =" ";
+            displayObj()
+
+
+             function displayObj() {
+            // objectDisplay = " "
+            for (let i = 0; i < arr.length; i++) {
+                objectDisplay.innerHTML = `<p>${i + 1} ${objects.keyInp} : ${objects.valueInp} <button>Delete</button> </p>`
+            }
             
         }
+
+        }
+
+        
+       
 
 
         // 2nd september 2026
@@ -60,6 +110,7 @@
         console.log(person["name"]);
         
 
+        // Class work : Display the inputed value inside an object with property and method
         // let objInp = document.getElementById('inputObj')
         // function obj(){
         //     let values = objInp.value;
@@ -69,6 +120,7 @@
         // console.log( user);
         // }
 
+        // Method  Two
         // function obj(){
         //     let objects = {};
         //     let objData = objInp.value;

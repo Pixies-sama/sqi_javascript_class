@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge Card</title>
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .main{
+            width: 95%;
+            height: 100vh;
+            margin:10px auto;
+            background-color: rgba(240, 240, 243, 0.783);
+        }
+        .section_one{
+             /* padding:0 20px 20px; */
+             background-color: rgba(15, 15, 211, 0.783);
+        }
+        h1{
+            text-align: center;
+            padding:  20px ;
+        }
+
+        .line{
+            border: dashed 2px black;
+        }
+        .container{
+            background-color: blueviolet;
+            display: flex;
+            gap: 20px;
+        }
+        .left{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* background-color: chartreuse; */
+        }
+        .right{
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .box{
+            width: 90%;
+            padding: 15px;
+        }
+        select{
+            width: 100%;
+            padding: 15px;
+        }
+        input{
+            width: 100%;
+            padding: 15px;
+        }
+        .btns{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            padding-bottom: 20px;
+        }
+        .btn{
+            width: 45%;
+            padding: 10px;
+        }
+        table {
+             font-family: arial, sans-serif;
+            border-collapse: collapse;
+             width: 100%;   
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <section class="section_one">
+        <h1>Recharge Card Generator</h1>
+        <div class="line"></div>
+        <div class="container">
+            <div class="left">
+                <div class="box">
+                <label for="network">Network:</label> <br>
+                <select name="network" id="network">]
+                    <option selected>Select Network</option>
+                    <option value="MTN">MTN</option>
+                    <option value="GLO">GLO</option>
+                    <option value="AIRTEL">AIRTEL</option>
+                    <option value="9MOBILE">9MOBILE</option>
+                </select>
+                </div>
+                <div class="box">
+                <label for="amount">Amount:</label> <br>
+                <select name="amount" id="amount">
+                    <option selected>Amount</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                <option value="2000">2000</option>
+                <option value="5000">5000</option>
+                </select>
+                </div>
+                <div class="box">
+                    <label for="generatedCode">Generated Code</label><br>
+                    <input type="number" name="generatedCode" id="generatedCode">
+                </div>
+                <div class="btns">
+                    <button onclick="generatePin()" class="btn">Generate Pin</button>
+                    <button onclick="savePin()" class="btn">Save Pin</button>
+                </div>
+            </div>
+
+            <div class="right">
+                <div>
+                <label for="network">Network:</label>
+                <select name="network" id="">
+                    <option selected>Network</option>
+                    <option value="MTN">MTN</option>
+                    <option value="GLO">GLO</option>
+                    <option value="AIRTEL">AIRTEL</option>
+                    <option value="9MOBILE">9MOBILE</option>
+                </select>
+                </div>
+                <!-- <div>
+                    <label for="generatedCode">Generated Code</label>
+                    <input type="number" name="generatedCode" id="generatedCode">
+                </div> -->
+                <div>
+                    <button>Generate Pin</button>
+                </div>
+            </div>
+        </div>
+            
+        </section>
+        <table>
+            <thead>
+                <tr>
+                <th>S/N</th>
+                <th>Network</th>
+                <th>Amount</th>
+                <th>PIN</th>
+                <th>Recharge Code</th>
+                <th>Status</th>
+                <th>Date Created</th>
+                <th>Date Used</th>
+                <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </main>
+    
+    <script>
+        // 8th september 2026
+        let network = document.getElementById('network');
+        let amount = document.getElementById('amount');
+        let generatedPin = document.getElementById('generatedCode')
+        let display = document.getElementById('tbody')
+
+        function generatePin(){
+            let genPin = Math.floor(Math.random() * 100000000000)
+            console.log(genPin);   
+            generatedPin.value = genPin
+        }
+
+        let rechargeArray = JSON.parse(localStorage.getItem("users")) || [];
+
+        let pincheck = {
+            MTN: "*555*",
+            GLO: "*312*",
+            AIRTEL: "*666*",
+            '9MOBILE': "*999*",
+        }
+
+
+        
+
+        function savePin(){
+            let rechargeOBj = {
+                network: network.value,
+                amount: amount.value,
+                pin: pincheck[network.value],
+                rechargeCode: pincheck[network.value] + generatedPin.value + "#",
+                status: "Unused",
+                dateCreated: new Date().toLocaleDateString(),
+                dateUsed: "",
+            }
+
+            rechargeArray.push(rechargeOBj);
+            console.log(rechargeArray);
+            
+            network.value = " ";
+            amount.value = " ";
+            generatedPin.value = "";
+
+            displayBox()
+
+            localStorage.setItem("users", JSON.stringify(rechargeArray))
+        }
+
+        
+
+        function displayBox() {
+            display.innerHTML = ""
+            rechargeArray.forEach((user, index, array) => {
+                 display.innerHTML += `
+                <tr>
+                    <th>${index + 1}</th>
+                    <th>${user.network}</th>
+                    <th>${user.amount}</th>
+                    <th>${user.pin}</th>
+                    <th>${user.rechargeCode}</th>
+                    <th>${user.status}</th>
+                    <th>${user.dateCreated}</th>
+                    <th>${user.dateUsed}</th>
+                    <th><button onclick="delBtn(${index})">Delete</button></th>
+                </tr>
+            `
+            });
+           
+        }
+
+  
+
+        displayBox()
+      function delBtn(index) {
+             rechargeArray.splice(index, 1);
+             localStorage.setItem("users", JSON.stringify(rechargeArray) )
+             displayBox()
+        }
+
+    </script>
+
+</body>
+</html>

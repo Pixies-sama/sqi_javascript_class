@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: blue;
+        }
+        h1{
+            margin-top: 30px;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+        }
+        .line{
+            border: dashed black 2px;
+            margin: 20px;
+        }
+        .section_one{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            gap: 20px;
+        }
+        .right{
+            width: 50%;
+        }
+        .left{
+            width: 50%;
+        }
+        .table{
+             padding: 10px 20px;
+        }
+        .btns{
+            display: flex;
+            padding: 10px 0px;
+            gap: 20px;
+        }
+        ::placeholder{
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recharge Card Generator</h1>
+    <div class="line"></div>
+    <section class="section_one">
+        <div class="right" >
+            <select class="form-select p-3" aria-label="Default select example" id="networkInput">
+                <option selected>Network</option>
+                <option value="MTN">MTN</option>
+                <option value="GLO">GLO</option>
+                <option value="AIRTEL">AIRTEL</option>
+                <option value="9MOBILE">9MOBILE</option>
+            </select>
+
+            <select class="form-select mt-3 p-3" aria-label="Default select example" id="amount">
+                <option selected>Amount</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                <option value="2000">2000</option>
+                <option value="5000">5000</option>
+            </select>
+
+        <div class="form-floating pt-2 mt-4">
+            <input type="number" class="form-control" id="code" placeholder="generated code" readonly>
+            <label for="code">Generated Code</label>
+        </div>
+
+        <div class="btns">
+        <button type="button" class="btn btn-success mt-4 p-4 mt-2 w-50" onclick="genPin()">Generate Pin</button>
+
+        <button type="button" class="btn btn-success mt-4 p-2 mt-2 w-50" onclick="addBtn()">Save Pin</button>
+        </div>
+        
+    </div>
+    <div class="left" >
+            <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="rechargeCode" placeholder="name@example.com">
+            <label for="rechargeCode">Recharge Code</label>
+            <button type="button" class="btn btn-success mt-4 p-4 mt-2 w-100" onclick="addBtn()">Generate Pin</button>
+        </div>
+        <div class="form-floating pt-2 mt-2">
+            <input type="number" class="form-control" id="search" placeholder="contact">
+            <label for="search">Search</label>
+        </div>
+
+        
+    </div>
+    
+    </section>
+   
+
+    <table class="table w-75 m-auto"  >
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Network</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Pin</th>
+      <th scope="col">Recharge Code</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date Created</th>
+      <th scope="col">Date Used</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+  </tbody>
+</table>
+
+<script>
+    let networkInput = document.getElementById('networkInput');
+    let amount = document.getElementById('amount');
+    let floatingContact = document.getElementById('floatingContact');
+    let display = document.getElementById('display');
+    let tbody = document.getElementById('tbody');
+    let code = document.getElementById('code');
+
+let arr = []
+
+function genPin() {
+         let genCode = Math.floor(Math.random() * 100000000000)
+         console.log(genCode);
+        //  code.value = genCode 
+    }
+
+    let pinObj = {
+        
+    }
+function addBtn() {
+    // if (networkInput.value == "MTN") {
+    //          pin = '*555#';
+    //          console.log("hi");
+    //     } else if(networkInput.value == "GLO"){
+    //          pin = '*123#';
+    //          console.log("hello");
+    //     }else if(networkInput.value == "AIRTEL"){
+    //          pin = '*312#';
+    //          console.log("yo");
+    //     }else if(networkInput.value == "9MOBILE"){
+    //          pin = '*666#';
+    //          console.log("hiiii");
+    //     }
+
+
+    let rechargeObj = {
+        network : networkInput.value,
+        amount :amount.value, 
+        pin : " ",
+        rechargeCode : genCode + "#",
+        status : "unused",
+        created : new Date(),
+        used : "----"
+    };
+
+    networkInput.value = " ";
+    amount.value = " ";
+    code.value = "";
+   
+    arr.push(rechargeObj)
+    show()
+    
+}
+
+function show() {
+    tbody.innerHTML = " "
+    for (let i = 0; i < arr.length; i++) {
+        tbody.innerHTML += `
+        <tr>
+            <th>${i + 1}</th>
+            <td>${arr[i].network}</td>
+            <td>${arr[i].amount}</td>
+            <td>${arr[i].pin}</td>
+            <td>${arr[i].rechargeCode}</td>
+            <td>${arr[i].status}</td>
+            <td>${arr[i].created.toLocaleDateString()}</td>
+            <td>${arr[i].used}</td>
+            <td><button onclick="delBtn(${i})">Delete</button></td>
+        </tr>
+        `
+    }
+}
+
+function delBtn(index) {
+            arr.splice(index, 1);
+           show()
+        }
+
+localStorage.setItem("recharge", JSON.stringify(arr))
+
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+</script>
+</body>
+</html>

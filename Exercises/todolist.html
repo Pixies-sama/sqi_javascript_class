@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="mx-auto p-2" style="width: 500px;">
+        <div class="form-floating mb-3">
+        <input type="name" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Username</label>
+    </div>
+
+        <select class="form-select" aria-label="Default select example" id="genderInput">
+            <option selected>select a gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="prefer not to say">Prefer not to say</option>
+        </select>
+
+        <div class="form-floating pt-2 mt-2">
+            <input type="number" class="form-control" id="floatingContact" placeholder="contact">
+            <label for="floatingContact">Contact</label>
+        </div>
+
+        <button type="button" class="btn btn-success p-2 mt-2" onclick="addBtn()">Add</button>
+    </div>
+
+    <table class="table mx-auto " style="width:500px;">
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+  </tbody>
+</table>
+    
+</body>
+
+<script>
+    let floatingInput = document.getElementById('floatingInput');
+    let genderInput = document.getElementById('genderInput');
+    let floatingContact = document.getElementById('floatingContact');
+    let display = document.getElementById('display');
+    let tbody = document.getElementById('tbody')
+
+
+let arr = []
+
+function addBtn() {
+    let objects = {
+        name : floatingInput.value,
+        gender:genderInput.value,
+        contact : floatingContact.value,
+    };
+
+    floatingInput.value = " ";
+    genderInput.value = " ";
+    floatingContact.value = "";
+   
+    arr.push(objects)
+    show()
+    // console.log(objects);
+    // console.log(arr);
+    
+}
+
+function show() {
+    tbody.innerHTML = " "
+    for (let i = 0; i < arr.length; i++) {
+        tbody.innerHTML += `
+        <tr>
+            <th>${i + 1}</th>
+            <td>${arr[i].name}</td>
+            <td>${arr[i].gender}</td>
+            <td>${arr[i].contact}</td>
+            <td><button onclick="delBtn(${i})">Delete</button></td>
+        </tr>
+        `
+    }
+}
+
+function delBtn(index) {
+            arr.splice(index, 1);
+           show()
+        }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+</script>
+</html>

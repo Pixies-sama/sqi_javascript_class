@@ -11,14 +11,15 @@
             margin: 0;
         }
         .main{
-            width: 95%;
+            width: 100%;
             height: 100vh;
             margin:10px auto;
-            background-color: rgba(240, 240, 243, 0.783);
+            background-color: rgba(6, 6, 243, 0.783);
         }
         .section_one{
-             /* padding:0 20px 20px; */
-             background-color: rgba(15, 15, 211, 0.783);
+             display: flex;
+             justify-content: center;
+             align-items: center;
         }
         h1{
             text-align: center;
@@ -29,7 +30,7 @@
             border: dashed 2px black;
         }
         .container{
-            background-color: blueviolet;
+            width: 95%;
             display: flex;
             gap: 20px;
         }
@@ -41,14 +42,15 @@
             /* background-color: chartreuse; */
         }
         .right{
-            width: 45%;
+            width: 50%;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            /* background-color: cadetblue; */
         }
         .box{
-            width: 90%;
-            padding: 15px;
+            width: 100%;
+            padding: 15px 0;
         }
         select{
             width: 100%;
@@ -56,17 +58,20 @@
         }
         input{
             width: 100%;
-            padding: 15px;
+            padding: 15px 0;
         }
         .btns{
             width: 100%;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
             padding-bottom: 20px;
         }
         .btn{
             width: 45%;
             padding: 10px;
+        }
+        label{
+            padding-bottom: 10px;
         }
         table {
              font-family: arial, sans-serif;
@@ -83,14 +88,22 @@
         tr:nth-child(even) {
         background-color: #dddddd;
         }
+        @media (max-width:604px) {
+            .main{
+                width: 604px;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- 8th september 2026 -->
     <main class="main">
-        <section class="section_one">
         <h1>Recharge Card Generator</h1>
         <div class="line"></div>
+        <section class="section_one">
         <div class="container">
+
             <div class="left">
                 <div class="box">
                 <label for="network">Network:</label> <br>
@@ -105,15 +118,16 @@
                 <div class="box">
                 <label for="amount">Amount:</label> <br>
                 <select name="amount" id="amount">
-                    <option selected>Amount</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="200">200</option>
-                <option value="500">500</option>
-                <option value="1000">1000</option>
-                <option value="2000">2000</option>
-                <option value="5000">5000</option>
+                        <option selected>Amount</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
+                        <option value="2000">2000</option>
+                        <option value="5000">5000</option>
                 </select>
+
                 </div>
                 <div class="box">
                     <label for="generatedCode">Generated Code</label><br>
@@ -125,25 +139,18 @@
                 </div>
             </div>
 
-            <div class="right">
-                <div>
-                <label for="network">Network:</label>
-                <select name="network" id="">
-                    <option selected>Network</option>
-                    <option value="MTN">MTN</option>
-                    <option value="GLO">GLO</option>
-                    <option value="AIRTEL">AIRTEL</option>
-                    <option value="9MOBILE">9MOBILE</option>
-                </select>
+            <div class="left">
+                <div class="box">
+                <label for="network">Recharge Code</label> <br>
+                 <input type="number" name="generatedCode" id="generatedCode">
                 </div>
-                <!-- <div>
-                    <label for="generatedCode">Generated Code</label>
-                    <input type="number" name="generatedCode" id="generatedCode">
-                </div> -->
-                <div>
-                    <button>Generate Pin</button>
+                
+                
+                <div class="btns" >
+                    <button onclick="generatePin()" class="btn" style="width: 100%;">Generate Pin</button>
                 </div>
             </div>
+
         </div>
             
         </section>

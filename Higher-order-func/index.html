@@ -10,16 +10,41 @@
      <script>
         // 8th september 2026
         // HOF = Higher Order Function is a function that takes another function as its argument
-        // Foreach
+        // Foreach : does not return
         let numbers = [1,2,3,4,5]
         numbers.forEach((number, index, array)=> {
             console.log(`${number}  is at ${index} `);
             document.body.innerHTML += `<p>${number}  is at ${index} </p> `;
         })
-        // map
-        // filter
+
+
+        // map : map returns 
+          let names = ["Hassan", "Bro", "Pixies", "Bankai", "sola "]
+        let output =  names.map((name, index, array) => {
+            console.log("hi");
+            return `${name} is at index ${index}`;
+            
+          })
+          console.log(output);
+          
+           
+        // filter : to filter something out from
+
+        let filteredNumber = numbers.filter((num, ind, arr)=> {
+            return num % 2 != 0;
+        })
+
+        console.log(filteredNumber);
+        
+
+        // Find
+        let check = names.find((studentName, i)=> {
+            return studentName == "sola"
+        }) 
+        console.log(check);
+        
         // reduce
 
      </script>
 </body>
-</html>
+</html>    

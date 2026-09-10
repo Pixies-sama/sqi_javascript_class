@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        #box{
+            margin: auto;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background-color:rgba(0, 4, 255, 0.903);
+        }
+        img{
+            width: 100%;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <div id="box">
+        
+    </div>
+
+</div>
+
+
+
+    <script>
+
+const clothingProducts0ne = [
+    {
+        id: 1,
+        name: "Classic White T-Shirt",
+        description: "Soft cotton crew-neck T-shirt for everyday wear.",
+        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+        amount: 25.99,
+        currency: "USD",
+        category: "T-Shirts",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["White"],
+        stock: 45,
+        rating: 4.5
+    },
+    {
+        id: 2,
+        name: "Blue Denim Jacket",
+        description: "Classic-fit denim jacket with button-front closure.",
+        image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e",
+        amount: 59.99,
+        currency: "USD",
+        category: "Jackets",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["Blue"],
+        stock: 20,
+        rating: 4.7
+    },
+    {
+        id: 3,
+        name: "Black Hoodie",
+        description: "Warm fleece hoodie with a front pocket and adjustable hood.",
+        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7",
+        amount: 45.0,
+        currency: "USD",
+        category: "Hoodies",
+        sizes: ["M", "L", "XL"],
+        colors: ["Black", "Grey"],
+        stock: 31,
+        rating: 4.6
+    },
+    {
+        id: 4,
+        name: "Floral Summer Dress",
+        description: "Lightweight floral dress, perfect for warm-weather occasions.",
+        image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446",
+        amount: 39.99,
+        currency: "USD",
+        category: "Dresses",
+        sizes: ["XS", "S", "M", "L"],
+        colors: ["Floral"],
+        stock: 16,
+        rating: 4.4
+    },
+    {
+        id: 5,
+        name: "Slim Fit Chinos",
+        description: "Comfortable slim-fit chinos made with stretch cotton.",
+        image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a",
+        amount: 42.5,
+        currency: "USD",
+        category: "Pants",
+        sizes: ["30", "32", "34", "36"],
+        colors: ["Khaki", "Navy"],
+        stock: 28,
+        rating: 4.3
+    },
+    {
+        id: 6,
+        name: "Striped Polo Shirt",
+        description: "Breathable striped polo shirt with a smart casual look.",
+        image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d",
+        amount: 32.99,
+        currency: "USD",
+        category: "Polo Shirts",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["Blue", "White"],
+        stock: 38,
+        rating: 4.2
+    },
+    {
+        id: 7,
+        name: "Leather Biker Jacket",
+        description: "Premium faux-leather biker jacket with zip details.",
+        image: "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+        amount: 120.0,
+        currency: "USD",
+        category: "Jackets",
+        sizes: ["M", "L", "XL"],
+        colors: ["Black", "Brown"],
+        stock: 12,
+        rating: 4.8
+    },
+    {
+        id: 8,
+        name: "Grey Sweatpants",
+        description: "Relaxed-fit sweatpants with elastic waistband and side pockets.",
+        image: "https://images.unsplash.com/photo-1517438476312-10d79c077509",
+        amount: 35.99,
+        currency: "USD",
+        category: "Pants",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["Grey"],
+        stock: 40,
+        rating: 4.3
+    },
+    {
+        id: 9,
+        name: "Beige Trench Coat",
+        description: "Elegant water-resistant trench coat with a waist belt.",
+        image: "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543",
+        amount: 89.99,
+        currency: "USD",
+        category: "Coats",
+        sizes: ["S", "M", "L"],
+        colors: ["Beige"],
+        stock: 14,
+        rating: 4.6
+    },
+    {
+        id: 10,
+        name: "Red Knit Sweater",
+        description: "Cozy knit sweater with a soft feel and regular fit.",
+        image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105",
+        amount: 48.0,
+        currency: "USD",
+        category: "Sweaters",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["Red"],
+        stock: 25,
+        rating: 4.5
+    }
+    ];
+
+const clothingProducts = [
+    {
+        id: 1,
+        name: "Brown Brim Hat",
+        category: "Hats",
+        price: 25,
+        imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+        description: "Classic brown brim hat, perfect for sunny days."
+    },
+    {
+        id: 2,
+        name: "Blue Beanie",
+        category: "Hats",
+        price: 18,
+        imageUrl: "https://i.ibb.co/ypkgK0X/blue-beanie.png",
+        description: "Warm and cozy blue beanie for cold weather."
+    },
+    {
+        id: 3,
+        name: "Adidas NMD Sneakers",
+        category: "Sneakers",
+        price: 220,
+        imageUrl: "https://i.ibb.co/0s3pdnc/adidas-nmd.png",
+        description: "Stylish and comfortable Adidas NMD runners."
+    },
+    {
+        id: 4,
+        name: "Black Converse",
+        category: "Sneakers",
+        price: 110,
+        imageUrl: "https://i.ibb.co/bPmVXyP/black-converse.png",
+        description: "Classic black Converse high-top sneakers."
+    },
+    {
+        id: 5,
+        name: "Blue Jean Jacket",
+        category: "Jackets",
+        price: 90,
+        imageUrl: "https://i.ibb.co/mJS6vz0/blue-jean-jacket.png",
+        description: "Durable blue denim jacket, a timeless wardrobe staple."
+    },
+    {
+        id: 6,
+        name: "Black Jean Shearling Jacket",
+        category: "Jackets",
+        price: 125,
+        imageUrl: "https://i.ibb.co/XzcwL5s/black-shearling.png",
+        description: "Warm black shearling-lined denim jacket."
+    },
+    {
+        id: 7,
+        name: "Blue Tank Top",
+        category: "Womens",
+        price: 25,
+        imageUrl: "https://i.ibb.co/7CQVJNm/blue-tank.png",
+        description: "Light and comfortable blue tank top."
+    },
+    {
+        id: 8,
+        name: "Floral Blouse",
+        category: "Womens",
+        price: 45,
+        imageUrl: "https://i.ibb.co/4W2DGKm/floral-blouse.png",
+        description: "Elegant blouse with a beautiful floral pattern."
+    },
+    {
+        id: 9,
+        name: "Floral Dress",
+        category: "Womens",
+        price: 85,
+        imageUrl: "https://i.ibb.co/KV18Ysr/floral-dress.png",
+        description: "Charming floral dress, perfect for spring and summer."
+    },
+    {
+        id: 10,
+        name: "Grey Jean Jacket",
+        category: "Jackets",
+        price: 85,
+        imageUrl: "https://i.ibb.co/N71k1ML/grey-jean-jacket.png",
+        description: "Versatile grey denim jacket."
+    }
+];
+
+ let box = document.getElementById('box');
+
+    clothingProducts.forEach((product, index, array) => {
+        box.innerHTML += `
+            <div class="card" style="width: 25rem;">
+            <img src=${product.imageUrl} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${product.name}</h5>
+                <p class="card-text">${product.description}</p>
+                <p class="card-text">${product.category}</p>
+                <p class="card-text">$${product.price} USD</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        `
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <div id="container">
+        <h1 id="time"></h1>
+    </div>
+
+
+    <script>
+
+        // 10th september 2026
+        let times = document.getElementById('time');
+
+      let timeOne =  setInterval(() => {
+        
+            let hours = myDate.getHours();
+            let minutes = myDate.getMinutes();
+            let seconds = myDate.getSeconds();
+
+            times.innerHTML = `${hours} : ${minutes} : ${seconds} `
+            
+        },1000);
+
+
+
+        let time =  setInterval(() => {
+            let myDate = new Date();
+            times.innerHTML = `${myDate.toLocaleTimeString()}`
+            
+        },1000);
+        
+
+
+
+
+
+        
+
+        
+        // setInterval
+        // 1000ms === 1s
+        // 2000ms == 2s
+
+        // let num = 0;
+        // let interval = setInterval(() => {
+        //     console.log("Ayomide");
+        //     num++;
+        //     console.log(num);
+            
+        //     if (num == 9) {
+        //         clearInterval(interval)
+        //     }
+
+        // }, 1000);
+
+
+        // setTimeout
+        // let timeOut = setTimeout(() => {
+        //     console.log("Hassan");
+            
+        // }, 1000);
+        // clearTimeout()
+
+    </script>
+</body>
+</html>

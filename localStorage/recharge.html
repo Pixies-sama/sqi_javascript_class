@@ -13,7 +13,7 @@
         .main{
             width: 100%;
             height: 100vh;
-            margin:10px auto;
+            margin: auto;
             background-color: rgba(6, 6, 243, 0.783);
         }
         .section_one{
@@ -59,6 +59,7 @@
         input{
             width: 100%;
             padding: 15px 0;
+            padding-inline: 10px;
         }
         .btns{
             width: 100%;
@@ -70,13 +71,22 @@
             width: 45%;
             padding: 10px;
         }
+        .delBtn{
+            padding: 10px;
+            background-color: rgb(0, 0, 255);
+            border: none;
+            border-radius: 10px;
+        }
         label{
-            padding-bottom: 10px;
+            line-height: 2;
+            color: white;
+            font-size: 16px;
         }
         table {
              font-family: arial, sans-serif;
             border-collapse: collapse;
-             width: 100%;   
+             width: 100%;  
+             color: #dddddd; 
         }
 
         td, th {
@@ -86,11 +96,14 @@
         }
 
         tr:nth-child(even) {
-        background-color: #dddddd;
+        background-color: #0f6761;
         }
         @media (max-width:604px) {
             .main{
                 width: 604px;
+            }
+            .table{
+                width: 500px;
             }
         }
     </style>
@@ -130,7 +143,7 @@
 
                 </div>
                 <div class="box">
-                    <label for="generatedCode">Generated Code</label><br>
+                    <label for="generatedCode">Generated Code:</label><br>
                     <input type="number" name="generatedCode" id="generatedCode">
                 </div>
                 <div class="btns">
@@ -141,13 +154,12 @@
 
             <div class="left">
                 <div class="box">
-                <label for="network">Recharge Code</label> <br>
-                 <input type="number" name="generatedCode" id="generatedCode">
+                <label for="rechargeCode">Recharge Code:</label> <br>
+                 <input type="text" name="rechargeCode" id="rechargeCode">
                 </div>
-                
-                
+                <p id="result"></p>
                 <div class="btns" >
-                    <button onclick="generatePin()" class="btn" style="width: 100%;">Generate Pin</button>
+                    <button onclick="rechargeNow()" class="btn" style="width: 100%;">Recharge Code</button>
                 </div>
             </div>
 
@@ -178,6 +190,8 @@
         let amount = document.getElementById('amount');
         let generatedPin = document.getElementById('generatedCode')
         let display = document.getElementById('tbody')
+        let result = document.getElementById('result')
+        let rechargeCode = document.getElementById('rechargeCode')
 
         function generatePin(){
             let genPin = Math.floor(Math.random() * 100000000000)
@@ -194,9 +208,8 @@
             '9MOBILE': "*999*",
         }
 
-
+       
         
-
         function savePin(){
             let rechargeOBj = {
                 network: network.value,
@@ -214,13 +227,32 @@
             network.value = " ";
             amount.value = " ";
             generatedPin.value = "";
+            rechargeCode.value = "";
 
             displayBox()
 
             localStorage.setItem("users", JSON.stringify(rechargeArray))
         }
 
-        
+        function rechargeNow(){
+             let check = rechargeArray.find((user)=> {
+                    return rechargeCode.value === user.rechargeCode
+                }) 
+            if (check) {
+                if(check.status === "Unused") {
+                    result.innerHTML = "Successful"
+                    check.status = "Used"
+                    check.dateUsed = new Date().toLocaleDateString();
+                    localStorage.setItem("users", JSON.stringify(rechargeArray))
+                    displayBox()
+                } else {
+                    alert("It has beeen used")
+                }
+            } else {
+                result.innerHTML = "code doesn't exist";
+
+            }
+        }
 
         function displayBox() {
             display.innerHTML = ""
@@ -235,7 +267,7 @@
                     <th>${user.status}</th>
                     <th>${user.dateCreated}</th>
                     <th>${user.dateUsed}</th>
-                    <th><button onclick="delBtn(${index})">Delete</button></th>
+                    <th><button class="delBtn" onclick="delBtn(${index})">Delete</button></th>
                 </tr>
             `
             });

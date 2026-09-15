@@ -220,10 +220,11 @@
         </div>
 
         <!-- Alarm Set Status Panel -->
-        <audio src="./alarm.mp3" id="song"></audio>
-        <div class="panel alarm-status-panel" id="result">
-            
+        <audio src="./sukuna.mp3" id="song" loop></audio>
+        <div id="result" style="display: flex;flex-direction: column;gap: 10px;">
+              
         </div>
+      
     </div>
 
     <script>
@@ -241,8 +242,11 @@
 
         let alarms = [];
         let alarmObj;
-
+         
+        
         function setAlarm() {
+
+        
             alarmObj = {
             hour: hour.value,
             minute: minute.value,
@@ -251,8 +255,12 @@
 
             alarms.push(alarmObj)
             display()
+            hour.value = "";
+        minute.value = "";
+        second.value = "";
         }
 
+        
         let time =  setInterval(() => {
             let myDate = new Date();
             
@@ -265,16 +273,22 @@
 
               
             if (Number(alarmObj.hour) === hours && Number(alarmObj.minute) === minutes && Number(alarmObj.second) === seconds ) {
-                // alert("HI");
-                song.play()
+                song.loop = true;
+                if (song.paused) {
+                    song.play()
+                }
             } else {
                 
             }
         },1000);
 
+        
+
         function display(){
+            result.innerHTML = " "
             alarms.forEach((alarm, index, array) => {
-                result.innerHTML = `
+                result.innerHTML += `
+                <div class="panel alarm-status-panel" >
                     <div class="status-left">
                     <div class="status-icon">
                         <i class="fa-regular fa-clock"></i>
@@ -285,12 +299,15 @@
                     </div>
                 </div>
                 <div class="status-badge">Alarm set</div>
+                </div>
             `
             });
         }
 
+        
         function stopAlarm() {
             song.pause()
+            song.currentTime = 0;
         }
 
          // console.log(alarmObj.hour);

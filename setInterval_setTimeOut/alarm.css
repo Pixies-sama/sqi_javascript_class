@@ -251,6 +251,7 @@
         /* --- Alarm Set Status Panel --- */
         .alarm-status-panel {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
             padding: 16px 20px;

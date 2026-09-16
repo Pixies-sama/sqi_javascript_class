@@ -4,28 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        #box{
+            margin: auto;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background-color:rgba(8, 192, 208, 0.903);
+        }
+        img{
+            width: 100%;
+            height: 600px;
+        }
+        .card-body{
+            /* background-color: blue; */
+            font-size: 14px;
+        }
+        .card{
+            background-color: aliceblue;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <form action="" method="get">
+    <!-- <form action="" method="get">
         <input type="text">
         <input type="text">
         <input type="text"><input type="text"><input type="text">
-    </form>
+    </form> -->
+
+    <div id="box">
+        
+    </div>
+
+    </div>
+
     
 
     <script>
+        // 16th september 2026
+        let box = document.getElementById('box')
+
         // 14th september 2026
         // Synchronous programming
-            ``
-        // ASynchronous programming
-        console.log("Hello");
-        setInterval(() => {
-            console.log("Hey");
             
-        }, 5000);
+        // ASynchronous programming
+        // console.log("Hello");
+        // setInterval(() => {
+        //     console.log("Hey");
+            
+        // }, 5000);
 
-        console.log(100);
+        // console.log(100);
 
         // CRUD Operation
         // C- Create (POST)
@@ -39,7 +81,48 @@
         // what is the function of action attribute in form tag
         // Difference between POST AND GET 
         
+        // 16th september 2026
 
+        // let baseUrl = "https://fakestoreapi.com"
+
+        // let actualData;
+        const getData = async ()=>{
+            try {
+                // let response = await fetch('`${baseUrl}/products')
+                let response = await fetch('https://fakestoreapi.com/products')
+                console.log(response);
+               let actualData = await response.json();
+                console.log(actualData);
+                
+                actualData.forEach((product, index, array) => {
+                box.innerHTML += `
+                    <div class="card" style="width: 25rem;">
+                    <img src=${product.image} class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.title}</h5>
+                        <p class="card-text">${product.description}</p>
+                        <p class="card-text">${product.category}</p>
+                        <p class="card-text">$${product.price} USD</p>
+                        <p class="card-text">${product.rating.rate}</p>
+                        <p class="card-text">${product.rating.count}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+        `
+    });
+            } catch (error) {
+                if (error.message === "Failed to fetch") {
+                    console.log("Incorrect url");
+                    
+                }
+            }
+            
+        }
+
+        getData();
+
+        
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+</script>
 </body>
 </html>

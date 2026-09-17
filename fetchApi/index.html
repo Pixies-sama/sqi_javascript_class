@@ -87,13 +87,13 @@
 
         // let actualData;
         const getData = async ()=>{
-            try {
+             try {
                 // let response = await fetch('`${baseUrl}/products')
                 let response = await fetch('https://fakestoreapi.com/products')
                 console.log(response);
+
                let actualData = await response.json();
                 console.log(actualData);
-                
                 actualData.forEach((product, index, array) => {
                 box.innerHTML += `
                     <div class="card" style="width: 25rem;">

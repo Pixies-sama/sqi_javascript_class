@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">      
+    <title>Product Store</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        
+    }
+
+    body {
+        background-color: #f5f7fb;
+        color: #1f2937;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    nav {
+        width: 100%;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+        padding: 18px 7%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: #111827;
+    }
+
+    .logo span {
+        color: #4f46e5;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #4b5563;
+        font-size: 14px;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #4f46e5;
+    }
+
+    .cart {
+        background-color: #4f46e5;
+        color: white;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+
+    /* =========================
+       HERO / PAGE HEADER
+    ========================== */
+
+    .hero {
+        text-align: center;
+        padding: 55px 20px 35px;
+    }
+
+    .hero small {
+        color: #4f46e5;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin: 10px 0;
+        color: #111827;
+    }
+
+    .hero p {
+        max-width: 600px;
+        margin: auto;
+        color: #6b7280;
+        line-height: 1.7;
+        font-size: 15px;
+    }
+    .product-section {
+        width: 86%;
+        max-width: 1300px;
+        margin: auto;
+        padding-bottom: 60px;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .section-header h2 {
+        font-size: 22px;
+        color: #111827;
+    }
+
+    .product-count {
+        color: #6b7280;
+        font-size: 14px;
+    }
+    #box {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .card {
+        background-color: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    }
+    .product-image {
+        width: 100%;
+        height: 350px;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: 0.3s ease;
+    }
+
+    .card:hover .product-image img {
+        transform: scale(1.05);
+    }
+    .card-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .category {
+        font-size: 11px;
+        color: #4f46e5;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+        margin-bottom: 8px;
+    }
+
+    .card-title {
+        font-size: 16px;
+        line-height: 1.4;
+        color: #111827;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        --webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .card-text {
+        color: #6b7280;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .description {
+        margin-bottom: 15px;
+        display: -webkit-box;
+        --webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .product-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .price {
+        font-size: 20px;
+        font-weight: 800;
+        color: #111827;
+    }
+
+    .rating {
+        background-color: #fef3c7;
+        color: #92400e;
+        padding: 5px 9px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .product-button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 9px;
+        background-color: #111827;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s ease;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .cart-button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 9px;
+        background-color: #111827;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s ease;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .product-button:hover {
+        background-color: #4f46e5;
+    }
+    .cart-button:hover {
+        background-color: #4f46e5;
+    }
+    footer {
+        background-color: #111827;
+        color: #9ca3af;
+        text-align: center;
+        padding: 25px;
+        font-size: 13px;
+    }
+    @media (max-width: 1000px) {
+
+        #box {
+            grid-template-columns: repeat(2 , 1fr);
+        }
+
+        .hero h1 {
+            font-size: 36px;
+        }
+    }
+    @media (max-width: 750px) {
+
+        nav {
+            padding: 16px 5%;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .product-section {
+            width: 90%;
+        }
+
+        #box {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+    }
+    @media (max-width: 500px) {
+
+        .hero {
+            padding-top: 40px;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+        }
+
+        .hero p {
+            font-size: 14px;
+        }
+
+        #box {
+            grid-template-columns: 1fr;
+        }
+
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+
+        .product-image {
+            height: 280px;
+        }
+    }
+</style>
+</head>
+<body>
+<nav>
+    <div class="logo">
+        Shop<span>Hub</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">About</a></li>
+    </ul>
+    <a href="#" class="cart">
+        Cart
+    </a>
+</nav>
+<!-- <section class="hero">
+    <small>Our Collection</small>
+    <h1>Explore Our Products</h1>
+    <p>
+        Discover quality products from different categories.
+        Browse through our collection and find something you love.
+    </p>
+</section> -->
+
+
+<!-- PRODUCTS -->
+
+<section class="product-section">
+    <div class="section-header">
+        <!-- <h2>All Products</h2>
+        <span class="product-count">
+            Explore our collection
+        </span> -->
+    </div>
+    <!-- YOUR JAVASCRIPT WILL INSERT PRODUCTS HERE -->
+    <div id="box">
+    </div>
+</section>
+
+
+<script>
+    // 17th september 2026
+    let box = document.getElementById('box')
+    // let productButton = document.querySelectorAll('.product-button');
+    const getData = async ()=>{
+            try {
+                // let response = await fetch('`${baseUrl}/products')
+                let response = await fetch('https://fakestoreapi.com/products')
+                console.log(response);
+               let actualData = await response.json();
+                console.log(actualData);
+                
+                actualData.forEach((product, index, array) => {
+                box.innerHTML += `
+                    <div class="card" style="width: 25rem;">
+                    <img src=${product.image} class="product-image" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.title}</h5>
+                        <p class="description" id="description">${product.description.substring(0, 100)}...</p>
+                        <p class="category">${product.category}</p>
+                        <p class="price">$${product.price} USD</p>
+                        <p class="rating">${product.rating.rate}</p>
+                        <p class="card-text">${product.rating.count}</p>
+                        <button  class="product-button">See more</button>
+                        <button id="cart" class="cart-button">Cart</button> 
+                    </div>
+                     `  
+                    let description = card.querySelector('description')
+                    let seeMore = card.querySelector('product-button')
+
+                    seeMore.addEventListener('click', ()=>{
+                        
+                            if (seeMore.textContent == "See more") {
+                                    description.textContent = product.description;
+                                    seeMore.textContent = "See less";
+                                    alert("hi")
+                            } else { 
+                                    description.textContent = product.description.substring(0, 100) + "...";
+                                    seeMore.textContent = "See more";
+                                    console.log("hi");
+                            }
+                    })
+
+
+            });
+            } catch (error) {
+                if (error.message === "Failed to fetch") {
+                    console.log("Incorrect url");
+                    
+                }
+            }
+            
+        }
+        getData();
+
+        
+</script>
+
+</body>
+</html>

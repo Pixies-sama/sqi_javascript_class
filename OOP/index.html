@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    </style>
+    
+</head>
+<body>
+    
+ <h1>OOP CLASS</h1>
+    <script>
+        // let student  = {
+        //     name: "Omoloye",
+        //     age: 18,
+        //     gender: "male",
+        //     height: "1.7cm",
+        //     occupation: "Web developer",
+        //     canCode(){
+        //         console.log(`${this.name} can code`);
+                
+        //     }
+        // }
+
+        // console.log(student.name);
+        // console.log(student.age);
+        // student.canCode()
+
+        // 21st septeber 2026
+        // the four pillars of OOP
+        // ABSTRACTION
+        // POLYMORPHISM
+        // ENCAPSULATION
+        // INHERITANCE
+
+        class Car {
+            constructor(brand, color, speed, power) {
+                this.brand = brand
+                this.color = color
+                this.speed = speed 
+                this.power = power 
+            }
+
+            // Encapsulation
+            canSpeed(){
+                console.log(`${this.brand} can speed on ${this.speed}`);
+                
+            }
+        }
+
+        const carOne = new Car("Tesla", "Black", "1000km", "Solar")
+        const carTwo = new Car("Toyota", "White", "200km", "Petrol")
+
+        console.log(carOne);
+        console.log(carTwo);
+        carOne.canSpeed()
+        carTwo.canSpeed()
+
+
+        class Student {
+            constructor(name, age, gender, status, complexion, matric) {
+                this.name = name
+                this.age = age
+                this.gender = gender
+                this.status = status
+                this.complexion = complexion
+                this.matric = matric
+            }
+            // Abstraction 
+            hasMatricNo(){
+                console.log(`${this.name} has matric Number ${this.matric}`);
+                
+            }
+        }
+
+            // Inheritance
+        class Juniorstudent extends Student{
+             constructor(name, age, gender, status, complexion, matric){
+                    super(name, age, gender, status, complexion, matric)
+                }   
+
+                hasMatricNo(){
+                console.log(`${this.name} has matric Number ${this.matric}`);
+                
+            }
+            }
+
+        
+        const studentOne = new Student("Hassan", 24, "male", "married", "dark", 12345)
+        const studentTwo = new Student("Hassan", 24, "male", "married", "dark", 425353636)
+        console.log(studentOne);
+        console.log(studentTwo);
+        studentOne.hasMatricNo()
+
+
+        // classwork create a class of animals 
+        class Animal {
+            constructor(name, habitat, color, weight, sound) {
+               this.name = name
+               this.habitat = habitat
+               this.color = color
+               this.weight = weight 
+               this.sound = sound
+            }
+        }
+        
+        const animalOne = new Animal("Lion", "Terrestial", "white", "100lb", "roar")
+        const animalTwo = new Animal("Cat", "House", "yellow", "20lb", "meow")
+        const animalThree = new Animal("Goat", "Terrestial", "Black", "100lb", "bleat")
+        const animalFour = new Animal("Cat", "House", "yellow", "20lb", "meow")
+        const animalFive = new Animal("Lion", "Terrestial", "white", "100lb", "roar")
+        const animalSix = new Animal("Cat", "House", "yellow", "20lb", "meow")
+
+        console.log(animalOne);
+        console.log(animalTwo);
+        console.log(animalOne);
+        console.log(animalTwo);
+
+        // 22nd september 2026
+        // Encapsulation and Polymorphism was treated 
+
+        // 23rd september 20026
+        // Abstraction and polymorphism was taught 
+
+        // Abstraction
+        class Bankaccount {
+            #balance = 0;
+            constructor(name, age){
+                this.name = name 
+                this.age = age
+            }
+
+            deposit(amount){
+                console.log(`Your balance is $${this.#balance += amount}`);
+                
+            }
+
+            withdraw(amount){
+                console.log(`Your balance is $${this.#balance -= amount}`);
+                
+            }
+        }
+
+        const user1 = new Bankaccount();
+        user1.deposit(1000);
+        user1.deposit(1000);
+        user1.withdraw(1000);
+
+
+
+        // Polymorphism - Poly means many while morphism - means forms 
+
+        class Human {
+            constructor(name, age, gender){
+                this.name = name
+                this.age = age 
+                this.gender = gender 
+            }
+            thinkingLevel(){
+                console.log(`High level thinking`);
+                
+            }
+        }
+
+        class Lowperson extends Human{
+            thinkingLevel(){
+                console.log(`Intermediate level thinking`);
+                
+            }
+        }
+
+        const personOne = new Human("Tope", "12", "Male")
+        const personTwo = new Human("Joy", "82", "Female")
+
+        console.log(personOne);
+        console.log(personTwo);
+        personOne.thinkingLevel()
+
+
+        const personThree = new Lowperson("Tope", "12", "Male")
+        const personFour = new Lowperson("Joy", "82", "Female")
+
+        console.log(personThree);
+        console.log(personFour);
+        personThree.thinkingLevel()
+
+        
+    </script>
+</body>
+</html>

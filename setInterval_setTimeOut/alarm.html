@@ -236,17 +236,10 @@
         let result = document.getElementById('result')
         let song = document.getElementById('song')
 
-        let date = new Date()
-        date.toLocaleDateString()
-        console.log(date.toLocaleDateString());
-
         let alarms = [];
         let alarmObj;
          
-        
         function setAlarm() {
-
-        
             alarmObj = {
             hour: hour.value,
             minute: minute.value,
@@ -256,8 +249,8 @@
             alarms.push(alarmObj)
             display()
             hour.value = "";
-        minute.value = "";
-        second.value = "";
+            minute.value = "";
+            second.value = "";
         }
 
         
@@ -269,10 +262,11 @@
             let seconds = myDate.getSeconds();
 
             currentTime.innerHTML = `${hours} : ${minutes} : ${seconds} `
-            currentDate.innerHTML = `Mon, Sep ${myDate.getDate()}, ${myDate.getFullYear()}`
-
-              
-            if (Number(alarmObj.hour) === hours && Number(alarmObj.minute) === minutes && Number(alarmObj.second) === seconds ) {
+            // currentDate.innerHTML = `Mon, Sep ${myDate.getDate()}, ${myDate.getFullYear()}`
+            currentDate.innerHTML = `${myDate.toDateString()}`
+  
+            alarms.forEach(time => {
+                if (Number(time.hour) === hours && Number(time.minute) === minutes && Number(time.second) === seconds ) {
                 song.loop = true;
                 if (song.paused) {
                     song.play()
@@ -280,8 +274,10 @@
             } else {
                 
             }
+            });
         },1000);
 
+        
         
 
         function display(){

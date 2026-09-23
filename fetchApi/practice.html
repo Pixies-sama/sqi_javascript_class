@@ -70,11 +70,6 @@
         text-decoration: none;
     }
 
-
-    /* =========================
-       HERO / PAGE HEADER
-    ========================== */
-
     .hero {
         text-align: center;
         padding: 55px 20px 35px;
@@ -360,10 +355,10 @@
 
 <section class="product-section">
     <div class="section-header">
-        <!-- <h2>All Products</h2>
+        <h2>All Products</h2>
         <span class="product-count">
             Explore our collection
-        </span> -->
+        </span>
     </div>
     <!-- YOUR JAVASCRIPT WILL INSERT PRODUCTS HERE -->
     <div id="box">
@@ -374,7 +369,7 @@
 <script>
     // 17th september 2026
     let box = document.getElementById('box')
-    // let productButton = document.querySelectorAll('.product-button');
+    
     const getData = async ()=>{
             try {
                 // let response = await fetch('`${baseUrl}/products')
@@ -397,25 +392,9 @@
                         <button  class="product-button">See more</button>
                         <button id="cart" class="cart-button">Cart</button> 
                     </div>
-                     `  
-                    let description = card.querySelector('description')
-                    let seeMore = card.querySelector('product-button')
+                     `
+                    });
 
-                    seeMore.addEventListener('click', ()=>{
-                        
-                            if (seeMore.textContent == "See more") {
-                                    description.textContent = product.description;
-                                    seeMore.textContent = "See less";
-                                    alert("hi")
-                            } else { 
-                                    description.textContent = product.description.substring(0, 100) + "...";
-                                    seeMore.textContent = "See more";
-                                    console.log("hi");
-                            }
-                    })
-
-
-            });
             } catch (error) {
                 if (error.message === "Failed to fetch") {
                     console.log("Incorrect url");
@@ -424,6 +403,22 @@
             }
             
         }
+        for (let index = 0; index <  actualData.length; index++) {
+             let element =  actualData[index];
+                        let description = document.querySelectorAll('.description')
+                        let seeMore = document.querySelectorAll('.product-button')
+
+                        seeMore[index].addEventListener('click', ()=>{
+                                    
+                        if (seeMore[index].textContent == "See more") {
+                            description[index].textContent = element.description;
+                            seeMore[index].textContent = "See less";
+                        } else { 
+                            description[index].textContent = element.description.substring(0, 150) + "...";
+                            seeMore[index].textContent = "See more";
+                        }
+                        }); 
+                    }           
         getData();
 
         

@@ -20,7 +20,8 @@
             justify-content: center;
         }
         .section{
-            width: 50%;
+            width: 100%;
+            max-width: 918px;
             height: auto;
             background-color: rgb(80, 72, 72);
             display: flex;
@@ -69,8 +70,15 @@
         @media (max-width:425px) {
             .section{
             width: 90%;
+            max-width: 425px;
             height: 50%;
             background-color: rgb(173, 22, 22);
+        }
+        button{
+            padding: 30px;
+            font-size: 10px;
+            border: none;
+            border-radius: 10px;
         }
         }
 
@@ -82,7 +90,7 @@
             <div class="top">
                 <input type="number" id="inpOne" class="inp">
                 <input type="number" id="inpTwo" class="inp">
-                <h2 id="result">...</h2>
+                <h2 id="result"></h2>
             </div>
             <div class="bottom">
                 <div class="bottom_container">
@@ -99,17 +107,17 @@
                    
                     <button type="button" id="five">5</button>
                     <button type="button" id="six">6</button>
-                    <button type="button" id="" onclick="">-</button>
+                    <button type="button" id="" onclick="sub()">-</button>
                     <button type="button" id="seven">7</button>
                     <button type="button" id="eight">8</button>
 
                     <button type="button" id="nine">9</button>
-                    <button type="button" id="" onclick="">/</button>
+                    <button type="button" id="" onclick="div()">/</button>
                     <button type="button" id="">2</button>
                     <button type="button" id="">3</button>
                     <button type="button" id="zero">0</button>
 
-                    <button type="button" id="" onclick="">*</button>
+                    <button type="button" id="" onclick="mul()">*</button>
                 </div>
             </div>
         </section>
@@ -133,26 +141,27 @@
     let result = document.getElementById('result')
 
 
-    function add() {
-        result.textContent = Number(inputOne.value)+  +  + Number(inputTwo.value) ;
-        console.log(result);
-        
+    function add(a,b) {
+    // result.textContent =`${ Number(inputOne.value)} +  ${Number(inputTwo.value)}` ;
+    return a + b 
+    // console.log(result);   
     }
+   result.textContent = add(Number(inputOne.value), Number(inputTwo.value) )
 
     function sub() {
-        result.textContent = Number(inputOne.value)+  +  + Number(inputTwo.value) ;
+        result.textContent = `${Number(inputOne.value)}  -  ${Number(inputTwo.value)}`;
         console.log(result);
         
     }
 
     function div() {
-        result.textContent = Number(inputOne.value)+  +  + Number(inputTwo.value) ;
+        result.textContent = `${Number(inputOne.value)}  /  ${Number(inputTwo.value)}` ;
         console.log(result);
         
     }
 
-    function add() {
-        result.textContent = Number(inputOne.value)+  +  + Number(inputTwo.value) ;
+    function mul() {
+        result.textContent = `${Number(inputOne.value)}  *  ${Number(inputTwo.value)}` ;
         console.log(result);
         
     }

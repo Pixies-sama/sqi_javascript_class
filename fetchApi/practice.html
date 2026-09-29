@@ -393,6 +393,22 @@
                         <button id="cart" class="cart-button">Cart</button> 
                     </div>
                      `
+
+                     for (let index = 0; index <=  actualData.length; index++) {
+                        let element =  actualData[index];
+                        let description = document.querySelectorAll('.description')
+                        let seeMore = document.querySelectorAll('.product-button')
+
+                        seeMore[index].addEventListener('click', ()=>{       
+                        if (seeMore[index].textContent == "See more") {
+                            description[index].textContent = element.description;
+                            seeMore[index].textContent = "See less";
+                        } else if (seeMore[index].textContent == "See less") { 
+                            description[index].textContent = element.description.substring(0, 150) + "...";
+                            seeMore[index].textContent = "See more";
+                        }
+                        }); 
+                    }     
                     });
 
             } catch (error) {
@@ -403,22 +419,8 @@
             }
             
         }
-        for (let index = 0; index <  actualData.length; index++) {
-             let element =  actualData[index];
-                        let description = document.querySelectorAll('.description')
-                        let seeMore = document.querySelectorAll('.product-button')
 
-                        seeMore[index].addEventListener('click', ()=>{
-                                    
-                        if (seeMore[index].textContent == "See more") {
-                            description[index].textContent = element.description;
-                            seeMore[index].textContent = "See less";
-                        } else { 
-                            description[index].textContent = element.description.substring(0, 150) + "...";
-                            seeMore[index].textContent = "See more";
-                        }
-                        }); 
-                    }           
+              
         getData();
 
         

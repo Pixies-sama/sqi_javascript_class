@@ -17,9 +17,8 @@
             document.body.innerHTML += `<p>${number}  is at ${index} </p> `;
         })
 
-
         // map : map returns 
-          let names = ["Hassan", "Bro", "Pixies", "Bankai", "sola "]
+          let names = ["Hassan", "Bro", "Pixies", "Bankai", "sola"]
         let output =  names.map((name, index, array) => {
             console.log("hi");
             return `${name} is at index ${index}`;
@@ -27,7 +26,6 @@
           })
           console.log(output);
           
-           
         // filter : to filter something out from
 
         let filteredNumber = numbers.filter((num, ind, arr)=> {
@@ -36,7 +34,6 @@
 
         console.log(filteredNumber);
         
-
         // Find
         let check = names.find((studentName, i)=> {
             return studentName == "sola"
@@ -44,7 +41,12 @@
         console.log(check);
         
         // reduce
+        let figures = [1,2,3,4,5,6,7,8,9,10]
+        let result = figures.reduce((acc, currentvalue)=>{
+            return acc + currentvalue
+        }, 0)
 
+        console.log(result);
      </script>
 </body>
 </html>    

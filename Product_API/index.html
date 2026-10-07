@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 25px 8%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #bbb;
+        }
+
+        #display {
+            width: 90%;
+            max-width: 1400px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .cardBox {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: 0.3s ease;
+            padding-bottom: 20px;
+        }
+
+        .cardBox:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #f1f1f1;
+        }
+
+        .img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s ease;
+        }
+
+        .image-container:hover .img {
+            transform: scale(1.08);
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 21px;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .category {
+            display: inline-block;
+            background: #111;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .rating {
+            color: #f59e0b;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            padding: 11px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn {
+            background: #eee;
+            color: #111;
+        }
+
+        .btn:hover {
+            background: #ddd;
+        }
+
+        .cart-button {
+            background: #111;
+            color: white;
+            flex: 1;
+        }
+
+        .cart-button:hover {
+            background: #333;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 27px;
+            }
+
+            #display {
+                width: 92%;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Our Products</h1>
+        <p>Explore our collection and discover something you love.</p>
+    </header>
+
+    <div id="display"></div>
+
+    <script src="./product.js"></script>
+
+</body>
+</html>

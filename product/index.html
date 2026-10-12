@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Something Shoes — Catalog</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-monogram">NS</span>
+        <span class="brand-title">New Something Shoes</span>
+      </div>
+      <a href="https://wa.me/234703362329" target="_blank" class="chat-btn">
+        Chat on WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="catalog-heading">
+      <span class="eyebrow">Handcrafted Leatherwear</span>
+      <h1>Our Collection</h1>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="product-grid" class="product-grid"></div>
+  </main>
+
+  <!-- Product Preview Modal -->
+  <div id="product-modal" class="modal-overlay" hidden>
+    <div class="modal-content">
+      <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-body">
+        <img id="modal-img" src="" alt="" class="modal-image" />
+        <div class="modal-details">
+          <span id="modal-category" class="eyebrow"></span>
+          <h2 id="modal-title"></h2>
+          <div id="modal-price" class="modal-price"></div>
+          <p id="modal-material" class="modal-material"></p>
+
+          <label for="size-select" class="size-label">
+            Your size <span>(optional)</span>
+          </label>
+          <select id="size-select" class="size-select">
+            <option value="">Select size</option>
+            <option value="38">EU 38</option>
+            <option value="39">EU 39</option>
+            <option value="40">EU 40</option>
+            <option value="41">EU 41</option>
+            <option value="42">EU 42</option>
+            <option value="43">EU 43</option>
+            <option value="44">EU 44</option>
+            <option value="45">EU 45</option>
+          </select>
+
+          <a id="modal-whatsapp" href="#" target="_blank" class="whatsapp-btn">
+            I’m interested — WhatsApp &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

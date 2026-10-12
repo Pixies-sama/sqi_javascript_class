@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <!-- 8th october 2026 -->
+    <style>
+        body{
+            background-color: cornflowerblue;
+        }
+    </style>
+
+    <form class="m-auto w-50">
+  <div class="mb-3 " >
+    <label for="userName" class="form-label">Username</label>
+    <input type="text" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="">
+  </div>
+  <button type="button" class="btn btn-primary mt-3" id="submitBtn" >Submit</button>
+</form>
+
+<div id="display"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script type="module" src=""></script>
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+    // import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDsQiD3pQat2KX9uRqXqw-Num6HHhUXvnA",
+        authDomain: "hassan-blog-2d685.firebaseapp.com",
+        projectId: "hassan-blog-2d685",
+        storageBucket: "hassan-blog-2d685.firebasestorage.app",
+        messagingSenderId: "513061618900",
+        appId: "1:513061618900:web:b2d8247b62126c82932741"
+    };
+
+     // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app)
+    //   const db = getFirestore(app)
+    //   const colRef = collection(db, "myblog");
+
+    let  titleInput = document.getElementById("titleInput")
+    let  authorInput = document.getElementById("authorInput")
+    let  contentInput = document.getElementById("contentInput")
+    let  imageInput = document.getElementById("imageInput")
+    let submitBtn = document.getElementById('submitBtn')
+    let published = document.getElementById('published')
+
+    let userName = document.getElementById('userName')
+    let userEmail = document.getElementById('email')
+    let userPassword = document.getElementById('password')
+
+
+    // submitBtn.addEventListener( "click", async (e)=>{
+    //     e.preventDefault();
+    //     let newBlogs = {
+    //         title: titleInput.value,
+    //         author: authorInput.value,
+    //         content: contentInput.value,
+    //         image: imageInput.value,
+    //         isItPublished: published.value
+    //        }
+    //        console.log(newBlogs);  
+    //        await addDoc(colRef, newBlogs);
+    //     allBlogs()
+                    
+    // })
+    submitBtn.addEventListener( "click", async (e)=>{
+             e.preventDefault();
+            try {
+                let user = {
+                    user: userName.value,
+                    email: userEmail.value,
+                    password: userPassword.value,
+                }
+                let userCredential = await createUserWithEmailAndPassword(auth, user.email, user.password)
+                console.log(user);
+                
+            } catch (error) {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+                
+            }
+    })
+
+    // const allBlogs = async ()=>{
+    //             const querysnapshot = await getDocs(colRef);
+    //             console.log(querysnapshot);
+                
+    //             querysnapshot.forEach(doc => {
+    //                 const data = {id: doc.id, ...doc.data()}
+    //                 // let {age, gender:mygender, myName} = data
+    //                 console.log(data);
+    //       display.innerHTML += `
+    //                     <div class="image-container">
+    //             <img 
+    //                 src="${data.image}" 
+    //                 alt="${data.title}" 
+    //                 class="img">
+    //                 </div>
+    //                 <div class="product-content">
+    //                     <h1 class="card-title">
+    //                         ${data.title}
+    //                     </h1>
+    //                     <h4 class="card-title">
+    //                         ${data.author}
+    //                     </h4>
+    //                     <p class="description">
+    //                         <span class="short">
+    //                             ${data.content.substring(0, 100)}
+    //                         </span>
+
+    //                         <span 
+    //                             class="long" 
+    //                             style="display:none;"
+    //                         >
+    //                             ${data.content}
+    //                         </span>
+    //                     </p>
+    //                 </div>
+    //                 `
+    //             })
+    //         }
+    //     allBlogs()
+
+    
+</script>
+</body>

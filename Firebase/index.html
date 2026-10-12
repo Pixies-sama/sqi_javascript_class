@@ -6,7 +6,7 @@
     <title>FireBase</title>
 </head>
 <body>
-    <style>
+    <!-- <style>
         * {
             margin: 0;
             padding: 0;
@@ -165,10 +165,12 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+    </style> -->
     <div id="display"></div>
+    
 
     <script type="module">
+        // 6th october 
         let display = document.getElementById('display')
         // Firebase is a backend as a service 
         // different services 
@@ -197,11 +199,31 @@
             const db = getFirestore(app)
             const colRef = collection(db, "myblog");
 
+
+            let  titleInput = document.getElementById("titleInput")
+            let  authorInput = document.getElementById("authorInput")
+            let  contentInput = document.getElementById("contentInput")
+            let  imageInput = document.getElementById("imageInput")
+            let submitBtn = document.getElementById('submitBtn')
+            let published = document.getElementById('published')
+
+    submitBtn.addEventListener( "click", async ()=>{
+        let newBlogs = {
+            title: titleInput.value,
+            author: authorInput.value,
+            content: contentInput.value,
+            image: imageInput.value,
+            isItPublished: published.value
+           }
+
+           addDoc(colRef, newBlogs)
+    })
+
             const allBlogs = async ()=>{
-                const quersnapshot = await getDocs(colRef);
-                console.log(quersnapshot);
+                const querysnapshot = await getDocs(colRef);
+                console.log(querysnapshot);
                 
-                quersnapshot.forEach(doc => {
+                querysnapshot.forEach(doc => {
                     const data = {id: doc.id, ...doc.data()}
                     // let {age, gender:mygender, myName} = data
                     console.log(data);

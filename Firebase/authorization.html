@@ -57,35 +57,13 @@
      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app)
-    //   const db = getFirestore(app)
-    //   const colRef = collection(db, "myblog");
-
-    let  titleInput = document.getElementById("titleInput")
-    let  authorInput = document.getElementById("authorInput")
-    let  contentInput = document.getElementById("contentInput")
-    let  imageInput = document.getElementById("imageInput")
-    let submitBtn = document.getElementById('submitBtn')
-    let published = document.getElementById('published')
-
+    
+   
     let userName = document.getElementById('userName')
     let userEmail = document.getElementById('email')
     let userPassword = document.getElementById('password')
 
 
-    // submitBtn.addEventListener( "click", async (e)=>{
-    //     e.preventDefault();
-    //     let newBlogs = {
-    //         title: titleInput.value,
-    //         author: authorInput.value,
-    //         content: contentInput.value,
-    //         image: imageInput.value,
-    //         isItPublished: published.value
-    //        }
-    //        console.log(newBlogs);  
-    //        await addDoc(colRef, newBlogs);
-    //     allBlogs()
-                    
-    // })
     submitBtn.addEventListener( "click", async (e)=>{
              e.preventDefault();
             try {
@@ -103,46 +81,6 @@
                 
             }
     })
-
-    // const allBlogs = async ()=>{
-    //             const querysnapshot = await getDocs(colRef);
-    //             console.log(querysnapshot);
-                
-    //             querysnapshot.forEach(doc => {
-    //                 const data = {id: doc.id, ...doc.data()}
-    //                 // let {age, gender:mygender, myName} = data
-    //                 console.log(data);
-    //       display.innerHTML += `
-    //                     <div class="image-container">
-    //             <img 
-    //                 src="${data.image}" 
-    //                 alt="${data.title}" 
-    //                 class="img">
-    //                 </div>
-    //                 <div class="product-content">
-    //                     <h1 class="card-title">
-    //                         ${data.title}
-    //                     </h1>
-    //                     <h4 class="card-title">
-    //                         ${data.author}
-    //                     </h4>
-    //                     <p class="description">
-    //                         <span class="short">
-    //                             ${data.content.substring(0, 100)}
-    //                         </span>
-
-    //                         <span 
-    //                             class="long" 
-    //                             style="display:none;"
-    //                         >
-    //                             ${data.content}
-    //                         </span>
-    //                     </p>
-    //                 </div>
-    //                 `
-    //             })
-    //         }
-    //     allBlogs()
 
     
 </script>

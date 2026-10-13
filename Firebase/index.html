@@ -6,7 +6,7 @@
     <title>FireBase</title>
 </head>
 <body>
-    <!-- <style>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -39,122 +39,98 @@
             width: 90%;
             max-width: 1400px;
             margin: 40px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 25px;
         }
 
-        .cardBox {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: 0.3s ease;
-            padding-bottom: 20px;
-        }
-
-        .cardBox:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
         .image-container {
-            width: 100%;
-            height: 230px;
-            overflow: hidden;
-            cursor: pointer;
-            background: #f1f1f1;
-        }
+    width: 50%;
+    height: 230px;
+    overflow: hidden;
+    background: #f1f5f9;
+    border-radius: 14px 14px 0 0;
+}
 
-        .img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.4s ease;
-        }
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
 
-        .image-container:hover .img {
-            transform: scale(1.08);
-        }
+.product-card {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
 
-        .product-content {
-            padding: 20px;
-        }
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
 
-        .card-title {
-            font-size: 21px;
-            margin-bottom: 10px;
-            color: #111;
-        }
+.product-card:hover .img {
+    transform: scale(1.06);
+}
 
-        .description {
-            color: #666;
-            line-height: 1.6;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
+.product-content {
+    padding: 22px;
+}
 
-        .category {
-            display: inline-block;
-            background: #111;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin-bottom: 15px;
-        }
+.product-content .card-title:first-child {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
 
-        .price {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+.product-content h4.card-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 16px;
+}
 
-        .rating {
-            color: #f59e0b;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+.description {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 0;
+    overflow-wrap: anywhere;
+}
 
-        .tags {
-            color: #777;
-            font-size: 13px;
-            margin-bottom: 18px;
-        }
+/* Responsive design */
+@media (max-width: 768px) {
+    .image-container {
+        height: 200px;
+    }
 
-        .buttons {
-            display: flex;
-            gap: 10px;
-        }
+    .product-content {
+        padding: 18px;
+    }
 
-        button {
-            border: none;
-            cursor: pointer;
-            padding: 11px 16px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    .product-content .card-title:first-child {
+        font-size: 18px;
+    }
+}
 
-        .btn {
-            background: #eee;
-            color: #111;
-        }
+@media (max-width: 480px) {
+    .image-container {
+        height: 180px;
+    }
 
-        .btn:hover {
-            background: #ddd;
-        }
-
-        .cart-button {
-            background: #111;
-            color: white;
-            flex: 1;
-        }
-
-        .cart-button:hover {
-            background: #333;
-        }
-
+    .product-content {
+        padding: 15px;
+    }
+}
         @media (max-width: 600px) {
             header h1 {
                 font-size: 27px;
@@ -165,7 +141,117 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style> -->
+    
+form {
+    max-width: 550px;
+    margin: 50px auto !important;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+}
+
+form .form-label {
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+form .form-control,
+form .form-select {
+    padding: 12px 14px;
+    border: 1px solid #ced4da;
+    border-radius: 9px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+form .form-control:focus,
+form .form-select:focus {
+    background-color: #ffffff;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+    outline: none;
+}
+
+form .form-control::placeholder {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+form .mb-3 {
+    margin-bottom: 22px !important;
+}
+
+form .form-select {
+    margin-top: 5px;
+    cursor: pointer;
+    min-height: 45px;
+}
+
+form #submitBtn {
+    width: 100%;
+    margin-top: 30px;
+    padding: 12px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #0d6efd, #084298);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+}
+
+form #submitBtn:hover {
+    background: linear-gradient(135deg, #084298, #052c65);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.25);
+}
+
+form #submitBtn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 90% !important;
+        max-width: none;
+        padding: 25px 20px;
+        margin: 30px auto !important;
+    }
+}
+
+    </style>
+    <form class="m-auto w-50">
+  <div class="mb-3 " >
+    <label for="titleInput" class="form-label">Title</label>
+    <input type="text" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Data Analysis">
+    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="mb-3">
+    <label for="authorInput" class="form-label">Author</label>
+    <input type="text" class="form-control" id="authorInput" placeholder="Omoloye Hassan">
+  </div>
+  <div class="mb-3">
+    <label for="contentInput" class="form-label">Content</label>
+    <input type="text" class="form-control" id="contentInput" placeholder="Lorem ipsum dolor adipisicing elit...">
+  </div>
+  <div class="mb-3">
+    <label for="imageInput" class="form-label">Image</label>
+    <input type="text" class="form-control" id="imageInput" placeholder="https://...">
+  </div>
+  <select class="form-select form-select-sm" aria-label="Small select example" id="published">
+  <option selected>Open this select menu</option>
+  <option value="true">True</option>
+  <option value="false">False</option>
+</select>
+  <button type="button" class="btn btn-primary mt-3" id="submitBtn" >Submit</button>
+</form>
+
     <div id="display"></div>
     
 
@@ -217,6 +303,7 @@
            }
 
            addDoc(colRef, newBlogs)
+           allBlogs()
     })
 
             const allBlogs = async ()=>{
@@ -259,8 +346,6 @@
                 })
             }
 
-
-            
             allBlogs()
     </script>
     

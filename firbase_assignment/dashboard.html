@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="./dashboard.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2 class="logo">MyDashboard</h2>
+
+        <nav>
+            <a href="#" class="nav-link active">Dashboard</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#profile" class="nav-link">My Profile</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn">
+            Logout
+        </button>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <h3>Dashboard</h3>
+            <span class="user-label">My Account</span>
+        </header>
+
+        <section class="welcome">
+            <h1>Welcome back! 👋</h1>
+            <p>Here's an overview of your dashboard.</p>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <h3>Total Projects</h3>
+                <p>05</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Completed</h3>
+                <p>03</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>In Progress</h3>
+                <p>02</p>
+            </div>
+        </section>
+
+        <section class="content-card" id="projects">
+            <h2>Recent Projects</h2>
+
+            <div class="project">
+                <span>Website Design</span>
+                <span class="status">In Progress</span>
+            </div>
+
+            <div class="project">
+                <span>Portfolio Website</span>
+                <span class="completed">Completed</span>
+            </div>
+
+            <div class="project">
+                <span>Dashboard UI</span>
+                <span class="completed">Completed</span>
+            </div>
+        </section>
+
+        <section class="content-card profile" id="profile">
+            <h2>My Profile</h2>
+            <p id="userEmail">Loading account...</p>
+        </section>
+    </main>
+
+    <script type="module" src="./dashboard.js"></script>
+</body>
+
+</html>

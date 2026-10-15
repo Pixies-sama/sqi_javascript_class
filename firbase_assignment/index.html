@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="./index.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <main class="main">
+        <section class="section">
+            <div class="sec_img">
+                <img src="../media/image.webp" alt="Hero page image">
+            </div>
+            <div class="form_container">
+               <form action="#" class="form_box" id="signIn">
+                <h2>Welcome back!</h2>
+                <p class="text">Today is a new day. it's your day. You shape it. <br> 
+                    Sign in to start managing your projects </p>
+
+                <div class="inp_box">
+                    <label for="email">Email address</label>
+                    <input type="email" placeholder="Enter your email" id="email"  required >
+                    <p id="emailError"></p>
+                </div>
+
+                <div class="inp_box">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Enter your username" id="password"  required minlength="8" >
+                    <p id="passwordError"></p>
+                </div>
+                <p class="forget"><a href="">Forget Password?</a></p>
+
+                <button type="submit" class="submit-btn" id="login">
+                    Login
+                </button>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <button type="submit" class="google-btn" id="google">
+                    <img
+                        src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                        alt="Google logo"
+                    >
+                    Sign in with Google
+                </button>
+
+                <p class="footer-text">
+                    Don't have an account?
+                    <a href="./signup.html">Sign up</a>
+                </p>
+            </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+  
+  import { getFirestore, getDocs, doc, setDoc } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
+
+    import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider,  signInWithPopup, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyARnmqtej61LLW2Cuz8RbMzWLuPDlnkBYs",
+    authDomain: "authentication-2b3ab.firebaseapp.com",
+    projectId: "authentication-2b3ab",
+    storageBucket: "authentication-2b3ab.firebasestorage.app",
+    messagingSenderId: "77468347822",
+    appId: "1:77468347822:web:42b80889caf0a76dbfac3f"
+  };
+
+  // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app)
+    const db = getFirestore(app)
+    const provider = new GoogleAuthProvider();
+
+
+        // let username = document.getElementById("username")
+        let email = document.getElementById("email")
+        let password = document.getElementById("password")
+        let login = document.getElementById("login")
+        let google = document.getElementById('google')
+        let signIn = document.getElementById("signIn");
+        let passwordError = document.getElementById("passwordError")
+
+    signIn.addEventListener( "submit", async (e)=>{
+             e.preventDefault();
+             try {
+                // await  signInWithEmailAndPassword(auth, email.value, password.value)
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                email.value.trim(),
+                password.value
+            );
+
+            const user = userCredential.user;
+
+            if (user.emailVerified) {
+                alert("Login successful!");
+                Swal.fire({
+                title: "Sin in successful",
+                icon: "success",
+                draggable: true
+                });
+                window.location.href = "dashboard.html";
+            } else {
+                await signOut(auth);
+                alert("Please verify your email before logging in.");
+            }
+            
+
+             } catch (error) {
+                console.error(error.code, error.message);
+                if (error.code === "auth/email-already-in-use") {
+                alert("An account with this email already exists.");
+                passwordError.innerHTML = "An account with this email already exists.";
+                } else if (error.code === "auth/invalid-email") {
+                passwordError.innerHTML = "Please enter a valid email address.";
+                alert("Please enter a valid email address.");
+                } else if (error.code === "auth/weak-password") {
+                passwordError.innerHTML = "Please choose a stronger password.";
+                alert("Please choose a stronger password.");
+                } else {
+                alert("Something went wrong. Please try again.");
+                }
+             }
+    })
+    google.addEventListener("click", ()=>{
+         signInWithPopup(auth, provider)
+                .then((output)=>{
+                    console.log(output);
+                    window.location.href = "dashboard.html";
+                })
+                .catch((error)=>{
+                    console.log(error.message);
+                    
+                })  
+    })
+
+    
+</script>
+</script>
+
+
+</body>
+</html>
